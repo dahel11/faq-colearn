@@ -420,11 +420,21 @@ async function handleSolved(yes, btns) {
         </svg>
         Chat dengan Kakak Siaga
       </a>`);
-    await wait(500);
-    showTyping(); await wait(700); removeTyping();
-    addBotBubble('Ada pertanyaan lain yang bisa Kakak bantu? 😊<br><br>Kalau ada pertanyaan lain, pilih topik di bawah.');
     await wait(400);
-    showMainMenu();
+    const backWrap = document.createElement('div');
+    backWrap.className = 'chips-wrap';
+    backWrap.style.paddingLeft = '36px';
+    const backBtn = document.createElement('button');
+    backBtn.className = 'chip';
+    backBtn.style.cssText = 'background: transparent; color: var(--text-muted); border-color: #E5E7EB; font-size: 12px;';
+    backBtn.textContent = '↩ Kembali ke menu utama';
+    backBtn.onclick = () => {
+      backWrap.remove();
+      showMainMenu();
+    };
+    backWrap.appendChild(backBtn);
+    msgs.appendChild(backWrap);
+    msgs.scrollTop = msgs.scrollHeight;
   }
 }
 
