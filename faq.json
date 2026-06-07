@@ -1,0 +1,70 @@
+[
+  {
+    "id": "cat1",
+    "type": "category",
+    "emoji": "🔐",
+    "label": "Akun & Login",
+    "order": 1,
+    "children": [
+      {
+        "id": "cat1_q1",
+        "type": "answer",
+        "emoji": "🔐",
+        "label": "Cara login ke aplikasi",
+        "order": 1,
+        "answer": "Untuk login silakan ikuti langkah berikut:\n1. Buka aplikasi CoLearn. Aplikasi dapat diunduh melalui Play Store / App Store\n2. Pilih <b>Masuk ke CoLearn</b>\n3. Masukkan nomor HP yang didaftarkan — kode OTP akan dikirim melalui WhatsApp"
+      },
+      {
+        "id": "cat1_q2",
+        "type": "answer",
+        "emoji": "📅",
+        "label": "Cara pilih jadwal pertama kali",
+        "order": 2,
+        "answer": "Untuk pilih jadwal pertama kali, ikuti langkah berikut:\n1. Buka aplikasi atau website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal — kode OTP akan dikirim melalui WhatsApp\n3. Pilih jadwal bimbel yang sesuai"
+      }
+    ]
+  },
+  {
+    "id": "cat2",
+    "type": "category",
+    "emoji": "📅",
+    "label": "Jadwal & Kelas",
+    "order": 2,
+    "children": [
+      {
+        "id": "cat2_q1",
+        "type": "answer",
+        "emoji": "🔄",
+        "label": "Cara ganti jadwal/slot",
+        "order": 1,
+        "answer": "⚠️ <b>Perhatian:</b> Perpindahan jadwal hanya dapat dilakukan <b>satu kali</b> dan bersifat tetap dalam satu semester.\n\nJika ingin melanjutkan, ikuti langkah berikut:\n1. Isi form di: <a href='https://ubahjadwal-colearn.vercel.app/' target='_blank'>ubahjadwal-colearn.vercel.app</a>\n2. Cek data diri\n3. Klik <b>Hubungi Kakak Siaga via WhatsApp</b> dan kirimkan pesan yang sudah tertulis"
+      },
+      {
+        "id": "cat2_q2",
+        "type": "branch",
+        "emoji": "🎓",
+        "label": "Cara masuk kelas",
+        "order": 2,
+        "branch_question": "CoFriends pakai HP atau laptop?",
+        "children": [
+          {
+            "id": "cat2_q2a",
+            "type": "answer",
+            "emoji": "📱",
+            "label": "HP",
+            "order": 1,
+            "answer": "Untuk masuk kelas dari HP, ikuti langkah berikut:\n1. Buka aplikasi CoLearn\n2. Klik <b>Bimbel</b> di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol <b>Masuk sekarang</b> bisa diklik 5 menit sebelum kelas dimulai"
+          },
+          {
+            "id": "cat2_q2b",
+            "type": "answer",
+            "emoji": "💻",
+            "label": "Laptop",
+            "order": 2,
+            "answer": "Untuk masuk kelas dari laptop, ikuti langkah berikut:\n1. Buka browser Chrome atau Firefox\n2. Akses <a href='https://colearn.id/' target='_blank'>colearn.id</a>\n3. Klik tombol <b>Masuk</b> di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa 0 atau +62 — kode OTP dikirim via WhatsApp"
+          }
+        ]
+      }
+    ]
+  }
+]
