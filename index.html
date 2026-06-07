@@ -13,14 +13,16 @@
     --blue: #4169E1;
     --blue-dark: #2F50C1;
     --blue-light: #EEF2FF;
-    --blue-bubble: #4169E1;
     --gray-bg: #F5F6FA;
     --gray-msg: #F0F0F0;
     --text: #1A1A2E;
     --text-muted: #6B7280;
     --white: #FFFFFF;
     --radius: 18px;
-    --radius-sm: 10px;
+    --green: #22C55E;
+    --green-dark: #16A34A;
+    --wa: #25D366;
+    --wa-dark: #1DB954;
   }
 
   body {
@@ -42,10 +44,9 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    position: relative;
   }
 
-  /* Header */
+  /* ── Header ── */
   .chat-header {
     background: var(--blue);
     padding: 20px 20px 16px;
@@ -59,14 +60,12 @@
     background: rgba(255,255,255,0.2);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+    font-size: 20px; flex-shrink: 0;
   }
-  .header-info { flex: 1; }
   .header-name { color: #fff; font-size: 15px; font-weight: 600; }
   .header-status { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 1px; }
 
-  /* Messages area */
+  /* ── Messages ── */
   .messages {
     flex: 1;
     overflow-y: auto;
@@ -78,7 +77,7 @@
   }
   .messages::-webkit-scrollbar { width: 0; }
 
-  /* Bubble base */
+  /* ── Bubbles ── */
   .bubble {
     max-width: 78%;
     font-size: 13.5px;
@@ -92,57 +91,44 @@
     to   { opacity: 1; transform: scale(1) translateY(0); }
   }
 
-  /* Bot bubble (left) */
   .bot-row { display: flex; align-items: flex-end; gap: 8px; }
   .bot-avatar {
     width: 28px; height: 28px;
     background: var(--blue);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 13px;
-    flex-shrink: 0;
-    margin-bottom: 2px;
+    font-size: 13px; flex-shrink: 0; margin-bottom: 2px;
   }
   .bubble-bot {
     background: var(--gray-msg);
     color: var(--text);
     border-radius: var(--radius) var(--radius) var(--radius) 4px;
   }
+  .bubble-bot a { color: var(--blue); }
+  .bubble-bot ol { padding-left: 18px; margin-top: 6px; }
+  .bubble-bot ol li { margin-bottom: 3px; }
 
-  /* User bubble (right) */
   .user-row { display: flex; justify-content: flex-end; }
   .bubble-user {
-    background: var(--blue-bubble);
+    background: var(--blue);
     color: #fff;
     border-radius: var(--radius) var(--radius) 4px var(--radius);
   }
 
-  /* Timestamp */
-  .ts {
-    font-size: 10.5px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-  .ts-right { text-align: right; margin-right: 4px; color: rgba(255,255,255,0.65); }
+  .ts { font-size: 10.5px; color: var(--text-muted); margin-top: 2px; }
+  .ts-right { text-align: right; margin-right: 4px; }
   .ts-left  { margin-left: 36px; }
 
-  /* Bold & formatting inside bubbles */
-  .bubble b { font-weight: 600; }
-  .bubble ol { padding-left: 18px; margin-top: 6px; }
-  .bubble ol li { margin-bottom: 3px; }
-  .bubble a { color: inherit; text-decoration: underline; word-break: break-all; }
-  .bubble-user a { color: rgba(255,255,255,0.9); }
-  .note {
-    background: rgba(255,255,255,0.15);
-    border-left: 3px solid rgba(255,255,255,0.5);
-    padding: 6px 10px;
+  .warning-box {
+    background: #FFF8E1;
+    border-left: 3px solid #F59E0B;
+    padding: 7px 10px;
     border-radius: 6px;
     margin-bottom: 8px;
-    font-style: italic;
     font-size: 13px;
   }
 
-  /* Quick reply chips */
+  /* ── Chips ── */
   .chips-wrap {
     display: flex;
     flex-wrap: wrap;
@@ -164,23 +150,18 @@
   }
   .chip:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .chip:active { transform: scale(0.96); }
-  .chip.disabled { pointer-events: none; opacity: 0.4; }
+  .chip.used { pointer-events: none; opacity: 0.45; }
 
-  /* Solved / not solved buttons */
-  .solve-btns {
-    display: flex;
-    gap: 8px;
-    padding: 4px 0 4px 36px;
-    flex-wrap: wrap;
-  }
+  /* ── Solved buttons ── */
+  .solve-btns { display: flex; gap: 8px; padding: 4px 0 4px 36px; flex-wrap: wrap; }
   .btn-yes {
-    background: #22C55E; color: #fff;
+    background: var(--green); color: #fff;
     border: none; border-radius: 999px;
     padding: 8px 20px; font-size: 13px; font-weight: 600;
     cursor: pointer; font-family: inherit;
     transition: background 0.15s;
   }
-  .btn-yes:hover { background: #16A34A; }
+  .btn-yes:hover { background: var(--green-dark); }
   .btn-no {
     background: var(--white); color: var(--text);
     border: 1.5px solid #E5E7EB; border-radius: 999px;
@@ -190,55 +171,19 @@
   }
   .btn-no:hover { border-color: var(--blue); color: var(--blue); }
 
-  /* WA redirect button */
+  /* ── WA button ── */
   .btn-wa {
     display: inline-flex; align-items: center; gap: 8px;
-    background: #25D366; color: #fff;
+    background: var(--wa); color: #fff;
     border: none; border-radius: 999px;
     padding: 9px 18px; font-size: 13px; font-weight: 600;
     cursor: pointer; font-family: inherit;
-    text-decoration: none;
-    margin-top: 6px;
+    text-decoration: none; margin-top: 6px;
     transition: background 0.15s;
   }
-  .btn-wa:hover { background: #1DB954; }
+  .btn-wa:hover { background: var(--wa-dark); }
 
-  /* Input area */
-  .input-area {
-    padding: 10px 14px 16px;
-    background: var(--white);
-    border-top: 1px solid #F0F0F0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .input-box {
-    flex: 1;
-    background: var(--gray-bg);
-    border: 1px solid #E5E7EB;
-    border-radius: 999px;
-    padding: 10px 16px;
-    font-size: 13.5px;
-    font-family: inherit;
-    color: var(--text);
-    outline: none;
-    transition: border 0.15s;
-  }
-  .input-box:focus { border-color: var(--blue); }
-  .send-btn {
-    width: 40px; height: 40px;
-    background: var(--blue);
-    border: none; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.15s;
-    flex-shrink: 0;
-  }
-  .send-btn:hover { background: var(--blue-dark); }
-  .send-btn svg { width: 18px; height: 18px; fill: white; }
-
-  /* Typing indicator */
+  /* ── Typing indicator ── */
   .typing { display: flex; align-items: center; gap: 4px; padding: 12px 14px; }
   .dot { width: 7px; height: 7px; background: #B0B8C1; border-radius: 50%; animation: bounce 1.2s infinite; }
   .dot:nth-child(2) { animation-delay: 0.2s; }
@@ -248,249 +193,312 @@
     40% { transform: translateY(-5px); }
   }
 
-  .hidden { display: none !important; }
-  .divider {
-    text-align: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin: 4px 0;
+  /* ── Input area ── */
+  .input-area {
+    padding: 10px 14px 16px;
+    background: var(--white);
+    border-top: 1px solid #F0F0F0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
+  .input-hint {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .divider { text-align: center; font-size: 11px; color: var(--text-muted); margin: 4px 0; }
+
+  /* ── Loading state ── */
+  .loading-wrap {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    flex: 1; gap: 12px; color: var(--text-muted); font-size: 13px;
+  }
+  .spinner {
+    width: 28px; height: 28px;
+    border: 3px solid var(--blue-light);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
 <div class="phone-frame">
-  <!-- Header -->
   <div class="chat-header">
     <div class="avatar">🎓</div>
-    <div class="header-info">
+    <div>
       <div class="header-name">Kakak Siaga CoLearn</div>
       <div class="header-status">● Pusat Bantuan Otomatis</div>
     </div>
   </div>
 
-  <!-- Messages -->
   <div class="messages" id="messages">
-    <div class="divider">Hari ini</div>
-
-    <!-- Welcome bot -->
-    <div class="bot-row">
-      <div class="bot-avatar">🤖</div>
-      <div>
-        <div class="bubble bubble-bot">
-          Halo! Selamat datang di Pusat Bantuan CoLearn 👋<br><br>
-          Ada yang bisa Kakak bantu? Pilih pertanyaan di bawah ya!
-        </div>
-        <div class="ts ts-left">09:00</div>
-      </div>
-    </div>
-
-    <!-- Quick reply chips -->
-    <div class="chips-wrap" id="main-chips">
-      <button class="chip" onclick="selectQ(1)">📅 Cara pilih jadwal</button>
-      <button class="chip" onclick="selectQ(2)">🔐 Cara login ke aplikasi</button>
-      <button class="chip" onclick="selectQ(3)">🔄 Cara ganti jadwal</button>
-      <button class="chip" onclick="selectQ(4)">📱 Join kelas dari HP</button>
-      <button class="chip" onclick="selectQ(5)">💻 Join kelas dari laptop</button>
+    <div class="loading-wrap" id="loading">
+      <div class="spinner"></div>
+      <span>Memuat pertanyaan...</span>
     </div>
   </div>
 
-  <!-- Input -->
   <div class="input-area">
-    <div style="flex:1; text-align:center; font-size:12.5px; color:var(--text-muted); padding: 4px 0;">
-      👆 Pilih pertanyaan di atas untuk mulai
-    </div>
+    <span class="input-hint">👆 Pilih pertanyaan di atas untuk mulai</span>
   </div>
 </div>
 
 <script>
-const msgs = document.getElementById('messages');
-const mainChips = document.getElementById('main-chips');
+// ─────────────────────────────────────────────
+// CONFIG — ganti sesuai kebutuhan
+// ─────────────────────────────────────────────
+const FAQ_JSON_URL = './faq.json';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxj4gJhLCn1IQ97kkZgHd4Clf4AKffxVrsaa0DFzhLCrx8gcWMYTPWFQIuxAOr9CHA4VA/exec'; 
+const WA_NUMBER = '6281119954075';
+// ─────────────────────────────────────────────
 
+const msgs  = document.getElementById('messages');
+let faqData = [];
+
+// Session tracking
+const session = {
+  id: Date.now().toString(36) + Math.random().toString(36).slice(2),
+  startTime: Date.now(),
+  category: '',
+  question: '',
+  outcome: 'no_response'
+};
+
+// ── Helpers ──────────────────────────────────
 const now = () => {
   const d = new Date();
   return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
 };
 
-const answers = {
-  1: {
-    userText: "Cara pilih jadwal",
-    title: "Cara pilih jadwal kelas",
-    content: `Untuk pilih jadwal, ikuti langkah berikut:<ol>
-      <li>Buka aplikasi atau website CoLearn</li>
-      <li>Login menggunakan nomor yang didaftarkan (tanpa angka 0 atau +62 di awal) — kode OTP akan dikirim via WhatsApp</li>
-      <li>Pilih jadwal bimbel yang cocok</li>
-    </ol>`
-  },
-  2: {
-    userText: "Cara login ke aplikasi",
-    title: "Cara login ke aplikasi CoLearn",
-    content: `Ikuti langkah berikut:<ol>
-      <li>Buka aplikasi CoLearn — bisa diunduh di Play Store atau App Store</li>
-      <li>Pilih <b>Masuk ke CoLearn</b></li>
-      <li>Masukkan nomor HP yang didaftarkan (kode OTP akan dikirim via WhatsApp)</li>
-    </ol>`
-  },
-  3: {
-    userText: "Cara ganti jadwal/slot",
-    title: "Cara ganti jadwal kelas",
-    content: `<div class="note">⚠️ Perpindahan jadwal hanya dapat dilakukan <b>satu kali</b> dan bersifat tetap dalam satu semester.</div>
-    Jika ingin melanjutkan, ikuti langkah berikut:<ol>
-      <li>Isi form di: <a href="https://ubahjadwal-colearn.vercel.app/" target="_blank">ubahjadwal-colearn.vercel.app</a></li>
-      <li>Cek data diri</li>
-      <li>Klik <b>"Hubungi Kakak Siaga via WhatsApp"</b> dan kirimkan pesan yang sudah tertulis</li>
-    </ol>`
-  },
-  4: {
-    userText: "Join kelas dari HP",
-    title: "Cara join kelas dari HP",
-    content: `Ikuti langkah berikut:<ol>
-      <li>Buka aplikasi CoLearn</li>
-      <li>Klik <b>Bimbel</b> di pojok kiri bawah</li>
-      <li>Kelas selanjutnya akan muncul paling atas</li>
-      <li>Tombol <b>"Masuk sekarang"</b> bisa diklik 5 menit sebelum kelas dimulai</li>
-    </ol>`
-  },
-  5: {
-    userText: "Join kelas dari laptop",
-    title: "Cara join kelas dari laptop",
-    content: `Ikuti langkah berikut:<ol>
-      <li>Buka browser Chrome atau Firefox</li>
-      <li>Akses <a href="https://colearn.id/" target="_blank">colearn.id</a></li>
-      <li>Klik tombol <b>Masuk</b> di pojok kanan atas</li>
-      <li>Login menggunakan nomor murid yang didaftarkan (tanpa 0 atau +62) — kode OTP dikirim via WhatsApp</li>
-    </ol>`
-  }
-};
+const wait = ms => new Promise(r => setTimeout(r, ms));
 
-function addMsg(html, type, delay=0) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      const t = now();
-      if (type === 'bot') {
-        const row = document.createElement('div');
-        row.className = 'bot-row';
-        row.innerHTML = `
-          <div class="bot-avatar">🤖</div>
-          <div>
-            <div class="bubble bubble-bot">${html}</div>
-            <div class="ts ts-left">${t}</div>
-          </div>`;
-        msgs.appendChild(row);
-      } else {
-        const wrap = document.createElement('div');
-        wrap.innerHTML = `
-          <div class="user-row"><div class="bubble bubble-user">${html}</div></div>
-          <div class="ts ts-right">${t}</div>`;
-        msgs.appendChild(wrap);
-      }
-      msgs.scrollTop = msgs.scrollHeight;
-      resolve();
-    }, delay);
-  });
+function disableChips(container) {
+  container?.querySelectorAll('.chip').forEach(c => c.classList.add('used'));
 }
 
 function showTyping() {
   const el = document.createElement('div');
-  el.className = 'bot-row';
-  el.id = 'typing-indicator';
-  el.innerHTML = `<div class="bot-avatar">🤖</div><div class="bubble bubble-bot typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
+  el.className = 'bot-row'; el.id = 'typing-ind';
+  el.innerHTML = `<div class="bot-avatar">🤖</div>
+    <div class="bubble bubble-bot typing">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>`;
   msgs.appendChild(el);
   msgs.scrollTop = msgs.scrollHeight;
 }
 
 function removeTyping() {
-  const el = document.getElementById('typing-indicator');
-  if (el) el.remove();
+  document.getElementById('typing-ind')?.remove();
 }
 
-function disableChips() {
-  document.querySelectorAll('.chip').forEach(c => c.classList.add('disabled'));
-}
-
-async function selectQ(n) {
-  disableChips();
-  const a = answers[n];
-
-  await addMsg(a.userText, 'user');
-  await new Promise(r => setTimeout(r, 400));
-  showTyping();
-  await new Promise(r => setTimeout(r, 900));
-  removeTyping();
-  await addMsg(`<b>${a.title}</b><br><br>${a.content}`, 'bot');
-
-  // Ask if solved
-  await new Promise(r => setTimeout(r, 500));
-  showTyping();
-  await new Promise(r => setTimeout(r, 700));
-  removeTyping();
-
-  const botRow = document.createElement('div');
-  botRow.className = 'bot-row';
-  botRow.innerHTML = `
+function addBotBubble(html) {
+  const t = now();
+  const row = document.createElement('div');
+  row.className = 'bot-row';
+  row.innerHTML = `
     <div class="bot-avatar">🤖</div>
     <div>
-      <div class="bubble bubble-bot">Apakah ada yang bisa Kakak bantu kembali? 😊</div>
+      <div class="bubble bubble-bot">${html}</div>
+      <div class="ts ts-left">${t}</div>
+    </div>`;
+  msgs.appendChild(row);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addUserBubble(text) {
+  const t = now();
+  const wrap = document.createElement('div');
+  wrap.innerHTML = `
+    <div class="user-row"><div class="bubble bubble-user">${text}</div></div>
+    <div class="ts ts-right">${t}</div>`;
+  msgs.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addChips(items, onClick, parentEl = msgs) {
+  const wrap = document.createElement('div');
+  wrap.className = 'chips-wrap';
+  items.sort((a,b) => a.order - b.order).forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.textContent = (item.emoji ? item.emoji + ' ' : '') + item.label;
+    btn.onclick = () => {
+      disableChips(wrap);
+      onClick(item, wrap);
+    };
+    wrap.appendChild(btn);
+  });
+  parentEl.appendChild(wrap);
+  msgs.scrollTop = msgs.scrollHeight;
+  return wrap;
+}
+
+// ── Format answer text (newlines + bold/links) ──
+function formatAnswer(text) {
+  return text
+    .replace(/\n(\d+)\./g, '<br>$1.')
+    .replace(/\n/g, '<br>');
+}
+
+// ── Log session to GAS ────────────────────────
+async function logSession(outcome) {
+  session.outcome = outcome;
+  const payload = {
+    session_id:      session.id,
+    timestamp:       new Date().toISOString(),
+    category:        session.category,
+    question:        session.question,
+    outcome:         outcome,
+    processing_time: Math.round((Date.now() - session.startTime) / 1000)
+  };
+  if (GAS_URL === 'GANTI_DENGAN_URL_GAS_WEB_APP') return; // skip if not configured
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) { console.warn('Log failed:', e); }
+}
+
+// ── Solved / not solved flow ──────────────────
+async function showSolvedQuestion() {
+  await wait(500);
+  showTyping(); await wait(700); removeTyping();
+
+  const row = document.createElement('div');
+  row.className = 'bot-row';
+  row.innerHTML = `
+    <div class="bot-avatar">🤖</div>
+    <div>
+      <div class="bubble bubble-bot">Apakah masalahnya sudah teratasi? 😊</div>
       <div class="ts ts-left">${now()}</div>
     </div>`;
-  msgs.appendChild(botRow);
+  msgs.appendChild(row);
 
-  const solveWrap = document.createElement('div');
-  solveWrap.className = 'solve-btns';
-  solveWrap.innerHTML = `
-    <button class="btn-yes" onclick="handleSolved(true, this.parentElement)">✅ Sudah, terima kasih</button>
-    <button class="btn-no" onclick="handleSolved(false, this.parentElement)">❌ Masih terkendala</button>`;
-  msgs.appendChild(solveWrap);
+  const btns = document.createElement('div');
+  btns.className = 'solve-btns';
+  btns.innerHTML = `
+    <button class="btn-yes">✅ Sudah teratasi</button>
+    <button class="btn-no">❌ Belum teratasi</button>`;
+  msgs.appendChild(btns);
   msgs.scrollTop = msgs.scrollHeight;
+
+  btns.querySelector('.btn-yes').onclick = () => handleSolved(true, btns);
+  btns.querySelector('.btn-no').onclick  = () => handleSolved(false, btns);
 }
 
-async function handleSolved(yes, el) {
-  el.remove();
+async function handleSolved(yes, btns) {
+  btns.remove();
   if (yes) {
-    await addMsg("Sudah teratasi ✅", 'user');
-    await new Promise(r => setTimeout(r, 400));
-    showTyping();
-    await new Promise(r => setTimeout(r, 700));
-    removeTyping();
-    await addMsg("Senang bisa membantu! 🎉 Semangat belajarnya ya! Kalau ada pertanyaan lain, jangan ragu untuk tanya lagi.", 'bot');
-
-    // Show menu again
-    await new Promise(r => setTimeout(r, 400));
-    const newChips = document.createElement('div');
-    newChips.className = 'chips-wrap';
-    newChips.innerHTML = `
-      <button class="chip" onclick="selectQ(1)">📅 Cara pilih jadwal</button>
-      <button class="chip" onclick="selectQ(2)">🔐 Cara login ke aplikasi</button>
-      <button class="chip" onclick="selectQ(3)">🔄 Cara ganti jadwal</button>
-      <button class="chip" onclick="selectQ(4)">📱 Join kelas dari HP</button>
-      <button class="chip" onclick="selectQ(5)">💻 Join kelas dari laptop</button>`;
-    msgs.appendChild(newChips);
+    addUserBubble('Sudah teratasi ✅');
+    logSession('solved');
+    await wait(400); showTyping(); await wait(700); removeTyping();
+    addBotBubble('Senang bisa membantu! 🎉 Semangat belajarnya ya!<br><br>Kalau ada pertanyaan lain, pilih topik di bawah.');
+    await wait(400);
+    showMainMenu();
   } else {
-    await addMsg("Belum teratasi ❌", 'user');
-    await new Promise(r => setTimeout(r, 400));
-    showTyping();
-    await new Promise(r => setTimeout(r, 700));
-    removeTyping();
-
-    const botRow = document.createElement('div');
-    botRow.className = 'bot-row';
-    botRow.innerHTML = `
-      <div class="bot-avatar">🤖</div>
-      <div>
-        <div class="bubble bubble-bot">
-          Tenang, Kakak Siaga siap membantu lebih lanjut! 🙋<br><br>
-          Klik tombol di bawah untuk langsung chat dengan Kakak Siaga via WhatsApp.
-          <br>
-          <a class="btn-wa" href="https://wa.me/6281234567890?text=Halo%20Kakak%20Siaga%2C%20saya%20butuh%20bantuan" target="_blank">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Chat dengan Kakak Siaga
-          </a>
-        </div>
-        <div class="ts ts-left">${now()}</div>
-      </div>`;
-    msgs.appendChild(botRow);
+    addUserBubble('Belum teratasi ❌');
+    logSession('not_solved');
+    await wait(400); showTyping(); await wait(700); removeTyping();
+    const waMsg = encodeURIComponent('Halo Kakak Siaga, saya butuh bantuan lebih lanjut 🙏');
+    addBotBubble(`Tenang, Kakak Siaga siap bantu lebih lanjut! 🙋<br><br>
+      <a class="btn-wa" href="https://wa.me/${WA_NUMBER}?text=${waMsg}" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Chat dengan Kakak Siaga
+      </a>`);
   }
-  msgs.scrollTop = msgs.scrollHeight;
 }
+
+// ── Navigation flows ──────────────────────────
+
+async function handleAnswer(item) {
+  session.question = item.label;
+  await wait(400); showTyping(); await wait(800); removeTyping();
+
+  const hasWarning = item.answer.startsWith('⚠️');
+  let html = '';
+  if (hasWarning) {
+    const lines = item.answer.split('\n\n');
+    const warnLine = lines[0].replace('⚠️ ', '');
+    const rest = lines.slice(1).join('\n\n');
+    html = `<div class="warning-box">⚠️ ${warnLine}</div>${formatAnswer(rest)}`;
+  } else {
+    html = `<b>${item.label}</b><br><br>${formatAnswer(item.answer)}`;
+  }
+  addBotBubble(html);
+  showSolvedQuestion();
+}
+
+async function handleBranch(item) {
+  session.question = item.label;
+  addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
+  await wait(400); showTyping(); await wait(700); removeTyping();
+  addBotBubble(item.branch_question || 'Pilih salah satu:');
+  await wait(300);
+  addChips(item.children, async (child, wrap) => {
+    disableChips(wrap);
+    addUserBubble((child.emoji ? child.emoji + ' ' : '') + child.label);
+    await handleAnswer(child);
+  });
+}
+
+async function handleCategory(cat, chipsWrap) {
+  session.category = cat.label;
+  addUserBubble((cat.emoji ? cat.emoji + ' ' : '') + cat.label);
+  await wait(400); showTyping(); await wait(600); removeTyping();
+  addBotBubble(`Oke, soal <b>${cat.label}</b>! Pilih pertanyaanmu:`);
+  await wait(300);
+  addChips(cat.children, async (item, wrap) => {
+    disableChips(wrap);
+    if (item.type === 'branch') {
+      await handleBranch(item);
+    } else {
+      addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
+      await handleAnswer(item);
+    }
+  });
+}
+
+function showMainMenu() {
+  addChips(faqData, async (cat, wrap) => {
+    disableChips(wrap);
+    await handleCategory(cat, wrap);
+  });
+}
+
+// ── Init ──────────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch(FAQ_JSON_URL);
+    faqData = await res.json();
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<span style="color:#EF4444">Gagal memuat data. Coba refresh halaman.</span>';
+    return;
+  }
+
+  document.getElementById('loading').remove();
+  msgs.innerHTML = '';
+
+  const divider = document.createElement('div');
+  divider.className = 'divider'; divider.textContent = 'Hari ini';
+  msgs.appendChild(divider);
+
+  showTyping(); await wait(800); removeTyping();
+  addBotBubble('Halo! Selamat datang di Pusat Bantuan CoLearn 👋<br><br>Ada yang bisa Kakak bantu? Pilih topik di bawah ya!');
+  await wait(400);
+  showMainMenu();
+}
+
+init();
 </script>
 </body>
 </html>
