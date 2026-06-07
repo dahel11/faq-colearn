@@ -258,8 +258,8 @@
 // CONFIG — ganti sesuai kebutuhan
 // ─────────────────────────────────────────────
 const FAQ_JSON_URL = './faq.json';
-const GAS_URL = 'GANTI_DENGAN_URL_GAS_WEB_APP'; // ← isi setelah deploy GAS
-const WA_NUMBER = '6281234567890'; // ← ganti dengan nomor WA Kakak Siaga
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxj4gJhLCn1IQ97kkZgHd4Clf4AKffxVrsaa0DFzhLCrx8gcWMYTPWFQIuxAOr9CHA4VA/exec'; // ← isi setelah deploy GAS
+const WA_NUMBER = '6281119954075'; // ← ganti dengan nomor WA Kakak Siaga
 // ─────────────────────────────────────────────
 
 const msgs  = document.getElementById('messages');
@@ -382,7 +382,7 @@ async function showSolvedQuestion() {
   row.innerHTML = `
     <div class="bot-avatar">🤖</div>
     <div>
-      <div class="bubble bubble-bot">Apakah masalahnya sudah teratasi? 😊</div>
+      <div class="bubble bubble-bot">Silakan coba langkah di atas. Apakah kendalanya sudah teratasi? 😊</div>
       <div class="ts ts-left">${now()}</div>
     </div>`;
   msgs.appendChild(row);
@@ -391,7 +391,7 @@ async function showSolvedQuestion() {
   btns.className = 'solve-btns';
   btns.innerHTML = `
     <button class="btn-yes">✅ Sudah teratasi</button>
-    <button class="btn-no">❌ Belum teratasi</button>`;
+    <button class="btn-no">❌ Belum, masih terkendala</button>`;
   msgs.appendChild(btns);
   msgs.scrollTop = msgs.scrollHeight;
 
@@ -409,7 +409,7 @@ async function handleSolved(yes, btns) {
     await wait(400);
     showMainMenu();
   } else {
-    addUserBubble('Belum teratasi ❌');
+    addUserBubble('Belum, masih terkendala ❌');
     logSession('not_solved');
     await wait(400); showTyping(); await wait(700); removeTyping();
     const waMsg = encodeURIComponent('Halo Kakak Siaga, saya butuh bantuan lebih lanjut 🙏');
