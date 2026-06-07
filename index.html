@@ -376,7 +376,7 @@ async function showSolvedQuestion() {
   row.innerHTML = `
     <div class="bot-avatar">🤖</div>
     <div>
-      <div class="bubble bubble-bot">Apakah masalahnya sudah teratasi? 😊</div>
+      <div class="bubble bubble-bot">Apakah ada yang bisa Kakak bantu kembali? 😊</div>
       <div class="ts ts-left">${now()}</div>
     </div>`;
   msgs.appendChild(row);
@@ -385,7 +385,7 @@ async function showSolvedQuestion() {
   btns.className = 'solve-btns';
   btns.innerHTML = `
     <button class="btn-yes">✅ Sudah teratasi</button>
-    <button class="btn-no">❌ Belum teratasi</button>`;
+    <button class="btn-no">❌ Belum, masih terkendala</button>`;
   msgs.appendChild(btns);
   msgs.scrollTop = msgs.scrollHeight;
 
@@ -403,7 +403,7 @@ async function handleSolved(yes, btns) {
     await wait(400);
     showMainMenu();
   } else {
-    addUserBubble('Belum teratasi ❌');
+    addUserBubble('Belum, masih terkendala ❌');
     logSession('not_solved');
     await wait(400); showTyping(); await wait(700); removeTyping();
     const waMsg = encodeURIComponent('Halo Kakak Siaga, saya butuh bantuan lebih lanjut 🙏');
