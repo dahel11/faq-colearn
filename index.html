@@ -429,7 +429,7 @@ async function selectQ(n) {
   botRow.innerHTML = `
     <div class="bot-avatar">🤖</div>
     <div>
-      <div class="bubble bubble-bot">Apakah masalahmu sudah teratasi? 😊</div>
+      <div class="bubble bubble-bot">Apakah ada yang bisa Kakak bantu kembali? 😊</div>
       <div class="ts ts-left">${now()}</div>
     </div>`;
   msgs.appendChild(botRow);
@@ -437,8 +437,8 @@ async function selectQ(n) {
   const solveWrap = document.createElement('div');
   solveWrap.className = 'solve-btns';
   solveWrap.innerHTML = `
-    <button class="btn-yes" onclick="handleSolved(true, this.parentElement)">✅ Sudah teratasi</button>
-    <button class="btn-no" onclick="handleSolved(false, this.parentElement)">❌ Belum teratasi</button>`;
+    <button class="btn-yes" onclick="handleSolved(true, this.parentElement)">✅ Sudah, terima kasih</button>
+    <button class="btn-no" onclick="handleSolved(false, this.parentElement)">❌ Masih terkendala</button>`;
   msgs.appendChild(solveWrap);
   msgs.scrollTop = msgs.scrollHeight;
 }
