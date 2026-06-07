@@ -420,6 +420,11 @@ async function handleSolved(yes, btns) {
         </svg>
         Chat dengan Kakak Siaga
       </a>`);
+    await wait(500);
+    showTyping(); await wait(700); removeTyping();
+    addBotBubble('Ada pertanyaan lain yang bisa Kakak bantu? 😊');
+    await wait(400);
+    showMainMenu();
   }
 }
 
