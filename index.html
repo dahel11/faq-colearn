@@ -453,7 +453,7 @@ async function handleSolved(yes, btns) {
       </a>`);
     await wait(400);
     const backWrap = document.createElement('div');
-    backWrap.className = 'chips-wrap';
+    backWrap.className = 'chips-wrap chips-single';
     backWrap.style.paddingLeft = '36px';
     const backBtn = document.createElement('button');
     backBtn.className = 'chip';
@@ -534,7 +534,7 @@ async function handleUrgent(item) {
   logSession('not_solved');
   await wait(400);
   const backWrap = document.createElement('div');
-  backWrap.className = 'chips-wrap';
+  backWrap.className = 'chips-wrap chips-single';
   backWrap.style.paddingLeft = '36px';
   const backBtn = document.createElement('button');
   backBtn.className = 'chip';
