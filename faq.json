@@ -32,7 +32,7 @@
       },
       {
         "id": "M8",
-        "label": "Cara download aplikasi",
+        "label": "Cara download app",
         "type": "answer",
         "answer": "Aplikasi CoLearn dapat didownload melalui link berikut:\n\n✅ Google Play Store: https://bit.ly/CoLearnOnPlayStore, atau\n✅ App Store: https://bit.ly/CoLearnOnAppStore"
       },
@@ -46,12 +46,12 @@
   },
   {
     "id": "C2",
-    "label": "Seputar Jadwal Kelas",
+    "label": "Tentang Jadwal Kelas",
     "type": "category",
     "children": [
       {
         "id": "M2",
-        "label": "Pilih jadwal kelas",
+        "label": "Cara pilih jadwal kelas",
         "type": "answer",
         "answer": "Untuk pilih jadwal silakan ikuti langkah di bawah:\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
       },
@@ -63,7 +63,7 @@
       },
       {
         "id": "M7",
-        "label": "Lihat jadwal kelasku",
+        "label": "Lihat jadwalku",
         "type": "answer",
         "answer": "Untuk jadwal kelas bisa dicek melalui aplikasi CoLearn dengan cara:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Klik \"Cek jadwal lainnya\"\n4. Pilih periode tanggal pada bagian \"Detail kelas\""
       },
@@ -82,13 +82,13 @@
     "children": [
       {
         "id": "M4a",
-        "label": "HP",
+        "label": "Dari HP",
         "type": "answer",
         "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
       },
       {
         "id": "M4b",
-        "label": "Laptop",
+        "label": "Dari Laptop",
         "type": "answer",
         "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
       }
@@ -101,13 +101,13 @@
     "children": [
       {
         "id": "M10",
-        "label": "Lihat materi sebelumnya di semester ini",
+        "label": "Lihat materi kelas semester ini",
         "type": "answer",
         "answer": "Materi kelas dapat diakses sehari setelah kelasnya selesai, di aplikasi CoLearn. Berikut langkahnya:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Geser ke bagian \"Kelas sebelumnya\"\n4. Pilih kelas yang ingin dilihat materinya, lalu klik \"Cek materi kelas\"\n5. Atau klik \"Lihat semua kelas sebelumnya\" untuk akses semua materi kelas yang sudah selesai"
       },
       {
         "id": "M11",
-        "label": "Lihat materi semester lalu",
+        "label": "Lihat materi kelas semester lalu",
         "type": "answer",
         "answer": "Untuk akses materi semester sebelumnya, silakan ikuti langkah berikut:\n\n1. Buka link https://sites.google.com/colearn.id/student-portal/materi-belajar\n2. Pilih kelas yang sesuai\n3. Pilih materi dalam bentuk PDF/Video Review sesuai dengan semester, kurikulum, dan pelajaran yang dicari. Buka dengan *Google Drive*\n4. Setelah *Google Drive* terbuka, pilih folder sesuai dengan topik yang dicari"
       }
