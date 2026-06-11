@@ -38,7 +38,7 @@
       },
       {
         "id": "M12",
-        "label": "Nama sekolah tidak tersedia di daftar",
+        "label": "Nama sekolah tidak tersedia",
         "type": "answer",
         "answer": "Terkait nama sekolah jika tidak ada di daftar pilihan, CoFriends bisa melakukan:\n1. Ketik manual nama sekolah\n2. Klik tulisan \"Lanjutkan pakai (nama sekolah)\""
       }
@@ -51,19 +51,19 @@
     "children": [
       {
         "id": "M2",
-        "label": "Cara pilih jadwal kelas",
+        "label": "Cara ilih jadwal kelas",
         "type": "answer",
         "answer": "Untuk pilih jadwal silakan ikuti langkah di bawah:\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
       },
       {
         "id": "M3",
-        "label": "Cara ganti jadwal kelas",
+        "label": "Ganti jadwal kelas",
         "type": "answer",
         "answer": "⚠️ PENTING: Perpindahan jadwal hanya dapat dilakukan satu kali dan bersifat tetap dalam satu semester.\n\nJika ingin melanjutkan, ikuti langkah berikut:\n1. Isi form berikut: https://ubahjadwal-colearn.vercel.app/\n2. Cek data diri\n3. Klik Hubungi Kakak Siaga via WhatsApp dan kirimkan pesan yang sudah tertulis"
       },
       {
         "id": "M7",
-        "label": "Cara lihat jadwal kelas saat ini",
+        "label": "Lihat jadwal kelas saat ini",
         "type": "answer",
         "answer": "Untuk jadwal kelas bisa dicek melalui aplikasi CoLearn dengan cara:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Klik \"Cek jadwal lainnya\"\n4. Pilih periode tanggal pada bagian \"Detail kelas\""
       },
@@ -76,28 +76,21 @@
     ]
   },
   {
-    "id": "C3",
-    "label": "Join Kelas",
-    "type": "category",
+    "id": "M4",
+    "label": "Cara Masuk Kelas",
+    "type": "branch",
     "children": [
       {
-        "id": "M4",
-        "label": "Cara masuk kelas",
-        "type": "branch",
-        "children": [
-          {
-            "id": "M4a",
-            "label": "Dari HP",
-            "type": "answer",
-            "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
-          },
-          {
-            "id": "M4b",
-            "label": "Dari Laptop",
-            "type": "answer",
-            "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
-          }
-        ]
+        "id": "M4a",
+        "label": "HP",
+        "type": "answer",
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
+      },
+      {
+        "id": "M4b",
+        "label": "Laptop",
+        "type": "answer",
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
       }
     ]
   },
@@ -108,7 +101,7 @@
     "children": [
       {
         "id": "M10",
-        "label": "Lihat materi kelas sebelumnya di semester ini",
+        "label": "Lihat materi sebelumnya di semester ini",
         "type": "answer",
         "answer": "Materi kelas dapat diakses sehari setelah kelasnya selesai, di aplikasi CoLearn. Berikut langkahnya:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Geser ke bagian \"Kelas sebelumnya\"\n4. Pilih kelas yang ingin dilihat materinya, lalu klik \"Cek materi kelas\"\n5. Atau klik \"Lihat semua kelas sebelumnya\" untuk akses semua materi kelas yang sudah selesai"
       },
