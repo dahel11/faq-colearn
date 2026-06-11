@@ -377,7 +377,8 @@ function addChips(items, onClick, parentEl = msgs, layout = null) {
 function formatAnswer(text) {
   return text
     .replace(/\n(\d+)\./g, '<br>$1.')
-    .replace(/\n/g, '<br>');
+    .replace(/\n/g, '<br>')
+    .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--blue);word-break:break-all;">$1</a>');
 }
 
 // ── Log session to GAS ────────────────────────
