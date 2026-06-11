@@ -152,10 +152,13 @@
 
   /* ── Chips ── */
   .chips-wrap {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
     padding: 4px 0 4px 36px;
+  }
+  .chips-wrap.chips-single {
+    grid-template-columns: 1fr;
   }
   .chip {
     background: var(--blue-light);
@@ -169,8 +172,9 @@
     transition: all 0.15s;
     font-family: inherit;
     white-space: nowrap;
-    flex: 1 1 auto;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .chip:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
   .chip:active { transform: scale(0.96); }
@@ -352,7 +356,7 @@ function addUserBubble(text) {
 
 function addChips(items, onClick, parentEl = msgs) {
   const wrap = document.createElement('div');
-  wrap.className = 'chips-wrap';
+  wrap.className = 'chips-wrap' + (items.length === 1 ? ' chips-single' : '');
   items.forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'chip' + (item.type === 'urgent' ? ' chip-urgent' : '');
