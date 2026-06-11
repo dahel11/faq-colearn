@@ -8,7 +8,7 @@
   },
   {
     "id": "U2",
-    "label": "Seputar pembayaran",
+    "label": "Tanya pembayaran",
     "type": "urgent",
     "waMessage": "Halo Kakak Siaga, aku butuh bantuan seputar pembayaran",
     "answer": "Tenang, Kakak Siaga siap bantu lebih lanjut!"
@@ -32,13 +32,13 @@
       },
       {
         "id": "M8",
-        "label": "Cara download aplikasi CoLearn",
+        "label": "Cara download aplikasi",
         "type": "answer",
         "answer": "Aplikasi CoLearn dapat didownload melalui link berikut:\n\n✅ Google Play Store: https://bit.ly/CoLearnOnPlayStore, atau\n✅ App Store: https://bit.ly/CoLearnOnAppStore"
       },
       {
         "id": "M12",
-        "label": "Nama sekolah tidak tersedia",
+        "label": "Nama sekolah tidak ada",
         "type": "answer",
         "answer": "Terkait nama sekolah jika tidak ada di daftar pilihan, CoFriends bisa melakukan:\n1. Ketik manual nama sekolah\n2. Klik tulisan \"Lanjutkan pakai (nama sekolah)\""
       }
@@ -51,7 +51,7 @@
     "children": [
       {
         "id": "M2",
-        "label": "Cara ilih jadwal kelas",
+        "label": "Cara pilih jadwal kelas",
         "type": "answer",
         "answer": "Untuk pilih jadwal silakan ikuti langkah di bawah:\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
       },
@@ -63,7 +63,7 @@
       },
       {
         "id": "M7",
-        "label": "Lihat jadwal kelas saat ini",
+        "label": "Lihat jadwal saat ini",
         "type": "answer",
         "answer": "Untuk jadwal kelas bisa dicek melalui aplikasi CoLearn dengan cara:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Klik \"Cek jadwal lainnya\"\n4. Pilih periode tanggal pada bagian \"Detail kelas\""
       },
@@ -82,13 +82,13 @@
     "children": [
       {
         "id": "M4a",
-        "label": "HP",
+        "label": "Dari HP",
         "type": "answer",
         "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
       },
       {
         "id": "M4b",
-        "label": "Laptop",
+        "label": "Dari Laptop",
         "type": "answer",
         "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
       }
