@@ -354,9 +354,10 @@ function addUserBubble(text) {
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-function addChips(items, onClick, parentEl = msgs) {
+function addChips(items, onClick, parentEl = msgs, layout = null) {
   const wrap = document.createElement('div');
-  wrap.className = 'chips-wrap' + (items.length === 1 ? ' chips-single' : '');
+  const single = layout === 'single' || items.length === 1;
+  wrap.className = 'chips-wrap' + (single ? ' chips-single' : '');
   items.forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'chip' + (item.type === 'urgent' ? ' chip-urgent' : '');
@@ -376,8 +377,7 @@ function addChips(items, onClick, parentEl = msgs) {
 function formatAnswer(text) {
   return text
     .replace(/\n(\d+)\./g, '<br>$1.')
-    .replace(/\n/g, '<br>')
-    .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--blue);word-break:break-all;">$1</a>');
+    .replace(/\n/g, '<br>');
 }
 
 // ── Log session to GAS ────────────────────────
@@ -515,7 +515,7 @@ async function handleCategory(cat, chipsWrap) {
       addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
       await handleAnswer(item);
     }
-  });
+  }, msgs, cat.layout || null);
 }
 
 async function handleUrgent(item) {
@@ -550,8 +550,6 @@ function showMainMenu() {
     disableChips(wrap);
     if (cat.type === 'urgent') {
       await handleUrgent(cat);
-    } else if (cat.type === 'branch') {
-      await handleBranch(cat);
     } else {
       await handleCategory(cat, wrap);
     }
