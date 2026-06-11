@@ -1,33 +1,22 @@
 [
   {
     "id": "U1",
-    "label": "! Kendala kelas hari ini",
+    "label": "Kendala kelas hari ini",
     "type": "urgent",
-    "emoji": "🚨",
     "waMessage": "Halo Kakak Siaga, aku butuh bantuan — ada kendala kelas hari ini",
     "answer": "Tenang, Kakak Siaga siap bantu lebih lanjut!"
   },
   {
     "id": "U2",
-    "label": "! Kendala pembayaran",
+    "label": "Seputar pembayaran",
     "type": "urgent",
-    "emoji": "💳",
-    "waMessage": "Halo Kakak Siaga, aku butuh bantuan — ada kendala pembayaran",
-    "answer": "Tenang, Kakak Siaga siap bantu lebih lanjut!"
-  },
-  {
-    "id": "U3",
-    "label": "! Daftar murid baru",
-    "type": "urgent",
-    "emoji": "✏️",
-    "waMessage": "Halo Kakak Siaga, aku ingin mendaftar sebagai murid baru",
+    "waMessage": "Halo Kakak Siaga, aku butuh bantuan seputar pembayaran",
     "answer": "Tenang, Kakak Siaga siap bantu lebih lanjut!"
   },
   {
     "id": "C1",
     "label": "Login ke Aplikasi",
     "type": "category",
-    "emoji": "📱",
     "children": [
       {
         "id": "M1",
@@ -59,7 +48,6 @@
     "id": "C2",
     "label": "Seputar Jadwal Kelas",
     "type": "category",
-    "emoji": "📅",
     "children": [
       {
         "id": "M2",
@@ -91,7 +79,6 @@
     "id": "C3",
     "label": "Join Kelas",
     "type": "category",
-    "emoji": "🖥️",
     "children": [
       {
         "id": "M4",
@@ -118,7 +105,6 @@
     "id": "C4",
     "label": "Materi Kelas",
     "type": "category",
-    "emoji": "📚",
     "children": [
       {
         "id": "M10",
