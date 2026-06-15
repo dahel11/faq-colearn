@@ -93,6 +93,12 @@
     "label": "Materi Kelas",
     "type": "category",
     "children": [
+       {
+        "id": "M11",
+        "label": "Lihat daftar materi saat ini",
+        "type": "answer",
+        "answer": "Untuk melihat susunan materi yang dipelajari saat ini, silakan ikuti langkah berikut:\n\n1. Akses halaman https://colearn.id/jadwal\n2. Pilih kelas yang sesuai\n3. Klik tombol \"Materi Belajar\""
+      },
       {
         "id": "M9",
         "label": "Lihat materi kelas semester ini",
