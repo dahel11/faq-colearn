@@ -569,6 +569,7 @@ async function handleSolved(yes, btns) {
 
 async function handleAnswer(item) {
   session.question = item.label;
+  session.startTime = Date.now();
   await wait(400); showTyping(); await wait(800); removeTyping();
 
   const hasWarning = item.answer.startsWith('⚠️');
@@ -592,6 +593,7 @@ async function handleAnswer(item) {
 
 async function handleBranch(item) {
   session.question = item.label;
+  session.startTime = Date.now();
   addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
   await wait(400); showTyping(); await wait(700); removeTyping();
   addBotBubble(item.branch_question || 'Pilih salah satu:');
