@@ -598,8 +598,12 @@ async function handleBranch(item) {
   addChips(item.children, async (child, wrap) => {
     disableChips(wrap);
     addUserBubble((child.emoji ? child.emoji + ' ' : '') + child.label);
-    await handleAnswer(child);
-  });
+    if (child.type === 'urgent') {
+      await handleUrgent(child);
+    } else {
+      await handleAnswer(child);
+    }
+  }, msgs, item.layout || null);
 }
 
 async function handleCategory(cat, chipsWrap) {
