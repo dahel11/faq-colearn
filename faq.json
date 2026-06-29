@@ -47,7 +47,7 @@
         "id": "M4",
         "label": "Cara pilih jadwal kelas",
         "type": "answer",
-        "answer": "⚠️ PENTING: Opsi pilih jadwal kelas hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
+        "answer": "⚠️ PENTING: Opsi pilih jadwal kelas hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
       },
       {
         "id": "M5",
