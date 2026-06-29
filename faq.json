@@ -22,13 +22,13 @@
         "id": "M1",
         "label": "Cara login ke aplikasi",
         "type": "answer",
-        "answer": "Untuk login silakan ikuti langkah berikut:\n1. Buka aplikasi CoLearn. Aplikasi dapat diunduh melalui Play Store / App Store\n2. Pilih Masuk ke CoLearn\n3. Masukkan nomor HP yang didaftarkan (kode OTP akan dikirim melalui WA)"
+        "answer": "Untuk login silakan ikuti langkah berikut:\n\n1. Buka aplikasi CoLearn. Aplikasi dapat diunduh melalui Play Store / App Store\n2. Pilih Masuk ke CoLearn\n3. Masukkan nomor HP yang didaftarkan (kode OTP akan dikirim melalui WA)"
       },
       {
         "id": "M2",
         "label": "Cara ganti nomor HP",
         "type": "answer",
-        "answer": "⚠️ PENTING: Untuk menghindari reset data aktivitas belajar di aplikasi seperti data kehadiran dan partisipasi polling, silakan melakukan perubahan nomor HP dari aplikasi CoLearn.\n\nCoFriends bisa mengikuti langkah ini:\n1. Buka aplikasi CoLearn\n2. Klik menu ☰ di pojok kiri atas\n3. Klik \"Akunmu\" lalu klik \"Ganti\"\n4. Edit kolom \"Nomor HP\" dengan memasukkan nomor yang baru\n5. Jika sudah sesuai, lalu klik \"Simpan\""
+        "answer": "⚠️ PENTING: Untuk menghindari reset data aktivitas belajar di aplikasi seperti data kehadiran dan partisipasi polling, silakan melakukan perubahan nomor HP dari aplikasi CoLearn.\n\nCoFriends bisa mengikuti langkah ini:\n\n1. Buka aplikasi CoLearn\n2. Klik menu ☰ di pojok kiri atas\n3. Klik \"Akunmu\" lalu klik \"Ganti\"\n4. Edit kolom \"Nomor HP\" dengan memasukkan nomor yang baru\n5. Jika sudah sesuai, lalu klik \"Simpan\""
       },
       {
         "id": "M3",
@@ -53,7 +53,7 @@
         "id": "M5",
         "label": "Ganti jadwal kelas",
         "type": "answer",
-        "answer": "⚠️ PENTING: Perpindahan jadwal hanya dapat dilakukan satu kali dan bersifat tetap dalam satu semester.\n\nJika ingin melanjutkan, ikuti langkah berikut:\n1. Isi form berikut: https://ubahjadwal-colearn.vercel.app/\n2. Cek data diri\n3. Klik Hubungi Kakak Siaga via WhatsApp dan kirimkan pesan yang sudah tertulis"
+        "answer": "⚠️ PENTING: Perpindahan jadwal hanya dapat dilakukan satu kali dan bersifat tetap dalam satu semester.\n\nJika ingin tetap mengganti jadwal, ikuti langkah berikut:\n\n1. Isi form berikut: https://ubahjadwal-colearn.vercel.app/\n2. Cek data diri\n3. Klik Hubungi Kakak Siaga via WhatsApp dan kirimkan pesan yang sudah tertulis"
       },
       {
         "id": "M6",
@@ -78,13 +78,13 @@
         "id": "M8a",
         "label": "Dari HP",
         "type": "answer",
-        "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
       },
       {
         "id": "M8b",
         "label": "Dari Laptop",
         "type": "answer",
-        "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
       }
     ]
   },
