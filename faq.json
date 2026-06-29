@@ -28,12 +28,12 @@
         "id": "M_KL",
         "label": "Ada kendala login",
         "type": "branch",
-        "branch_question": "Apakah kendala loginnya?",
+        "branch_question": "Boleh diinfokan kendala loginnya?",
         "layout": "single",
         "children": [
           {
             "id": "M_KL1",
-            "label": "Tertulis belum ada paket aktif di nomor HP",
+            "label": "Tertulis belum ada paket bimbel aktif",
             "type": "answer",
             "answer": "Hal tersebut terjadi kemungkinan akibat nomor HP yang dimasukkan kurang tepat.\n\nPastikan memasukkan nomor HP murid yang ditulis saat pembelian paket belajar. Silakan masukkan kembali nomor HP murid dengan tepat di aplikasi CoLearn."
           },
