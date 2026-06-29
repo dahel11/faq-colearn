@@ -451,7 +451,7 @@ async function handleSolved(yes, btns) {
     addUserBubble('Belum, masih terkendala ❌');
     logSession('not_solved');
     await wait(400); showTyping(); await wait(700); removeTyping();
-    const waMsg = encodeURIComponent('Halo Kakak Siaga, saya butuh bantuan lebih lanjut 🙏');
+    const waMsg = encodeURIComponent('Halo Kakak Siaga, saya tidak dapat menemukan jawaban di Chatbot dan butuh bantuan lebih lanjut 🙏');
     addBotBubble(`Tenang, Kakak Siaga siap bantu lebih lanjut! 🙋<br><br>
       <a class="btn-wa" href="https://wa.me/${WA_NUMBER}?text=${waMsg}" target="_blank">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
