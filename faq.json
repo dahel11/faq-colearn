@@ -35,13 +35,13 @@
             "id": "M_KL1",
             "label": "Tertulis belum ada paket bimbel aktif",
             "type": "answer",
-            "answer": "Hal tersebut terjadi kemungkinan akibat nomor HP yang dimasukkan kurang tepat.\n\nPastikan memasukkan nomor HP murid yang ditulis saat pembelian paket belajar. Silakan masukkan kembali nomor HP murid dengan tepat di aplikasi CoLearn."
+            "answer": "Hal tersebut terjadi kemungkinan akibat nomor HP yang dimasukkan kurang tepat.\n\n*Masukkan nomor HP murid yang diisi saat pembelian paket belajar.* Silakan masukkan kembali nomor HP murid dengan tepat di aplikasi CoLearn."
           },
           {
             "id": "M_KL2",
             "label": "Tidak menerima OTP di WA",
             "type": "urgent",
-            "waMessage": "Halo Kakak Siaga, saya tidak dapat menemukan jawaban di Chatbot dan butuh bantuan lebih lanjut 🙏",
+            "waMessage": "Halo Kakak Siaga, saya tidak menerima OTP di WhatsApp 🙏",
             "answer": "Untuk kendala OTP, silakan chat Kakak Siaga langsung ya!"
           }
         ]
@@ -69,7 +69,7 @@
         "id": "M4",
         "label": "Cara pilih jadwal kelas",
         "type": "answer",
-        "answer": "⚠️ PENTING: Opsi pilih jadwal kelas hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
+        "answer": "⚠️ PENTING: Opsi ini hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
       },
       {
         "id": "M5",
