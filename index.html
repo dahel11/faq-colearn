@@ -463,7 +463,7 @@ async function showUpgradeQuestion() {
       addUserBubble('Menambah Mata Pelajaran ➕');
       await wait(400); showTyping(); await wait(700); removeTyping();
       addBotBubble('Terkait penambahan mata pelajaran, silakan mengakses link berikut: <a href="https://bit.ly/colearn-upgrade" target="_blank" style="color:var(--blue)">https://bit.ly/colearn-upgrade</a>');
-      await showSolvedQuestion();
+      await showSolvedQuestion('Silakan coba akses link di atas. Apakah kendalanya sudah teratasi? 😊');
     };
 
     btns2.querySelector('.btn-no').onclick = async () => {
@@ -495,11 +495,11 @@ async function showUpgradeQuestion() {
   btns.querySelector('.btn-no').onclick = async () => {
     btns.remove();
     addUserBubble('Tidak ❌');
-    await showSolvedQuestion();
+    await showSolvedQuestion('Baik. Apakah kendalanya sudah teratasi? 😊');
   };
 }
 
-async function showSolvedQuestion() {
+async function showSolvedQuestion(msg = 'Silakan coba langkah di atas. Apakah kendalanya sudah teratasi? 😊') {
   await wait(500);
   showTyping(); await wait(700); removeTyping();
 
@@ -508,7 +508,7 @@ async function showSolvedQuestion() {
   row.innerHTML = `
     <div class="bot-avatar">🤖</div>
     <div>
-      <div class="bubble bubble-bot">Silakan coba langkah di atas. Apakah kendalanya sudah teratasi? 😊</div>
+      <div class="bubble bubble-bot">${msg}</div>
       <div class="ts ts-left">${now()}</div>
     </div>`;
   msgs.appendChild(row);
