@@ -160,6 +160,14 @@
   .chips-wrap.chips-single {
     grid-template-columns: 1fr;
   }
+  .chips-wrap.chips-grid-small {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .chips-wrap.chips-grid-small .chip {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
   .chip {
     background: var(--blue-light);
     color: var(--blue-dark);
@@ -356,7 +364,8 @@ function addUserBubble(text) {
 function addChips(items, onClick, parentEl = msgs, layout = null) {
   const wrap = document.createElement('div');
   const single = layout === 'single' || items.length === 1;
-  wrap.className = 'chips-wrap' + (single ? ' chips-single' : '');
+  const gridSmall = layout === 'grid-small';
+  wrap.className = 'chips-wrap' + (single ? ' chips-single' : gridSmall ? ' chips-grid-small' : '');
   items.forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'chip' + (item.type === 'urgent' ? ' chip-urgent' : '');
