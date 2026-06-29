@@ -93,7 +93,7 @@
     "label": "Materi Kelas",
     "type": "category",
     "children": [
-       {
+      {
         "id": "M11",
         "label": "Lihat daftar materi saat ini",
         "type": "answer",
@@ -110,6 +110,62 @@
         "label": "Lihat materi kelas semester lalu",
         "type": "answer",
         "answer": "Untuk akses materi semester sebelumnya, silakan ikuti langkah berikut:\n\n1. Buka link https://sites.google.com/colearn.id/student-portal/materi-belajar\n2. Pilih kelas yang sesuai\n3. Pilih materi dalam bentuk PDF/Video Review sesuai dengan semester, kurikulum, dan pelajaran yang dicari. Buka dengan *Google Drive*\n4. Setelah *Google Drive* terbuka, pilih folder sesuai dengan topik yang dicari"
+      }
+    ],
+    "layout": "single"
+  },
+  {
+    "id": "C5",
+    "label": "Paket Belajar Lainnya",
+    "type": "category",
+    "children": [
+      {
+        "id": "M12",
+        "label": "Kelas 4",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 4 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000"
+      },
+      {
+        "id": "M13",
+        "label": "Kelas 5",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 5 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M14",
+        "label": "Kelas 6",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 6 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M15",
+        "label": "Kelas 7",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 7 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M16",
+        "label": "Kelas 8",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 8 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M17",
+        "label": "Kelas 9",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 9 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M18",
+        "label": "Kelas 10",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 10 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+      },
+      {
+        "id": "M19",
+        "label": "Kelas 11",
+        "type": "answer",
+        "answer": "Paket belajar yang tersedia untuk Kelas 11 adalah:\n\n1. 1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas Fisika 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)\n4. Kelas Kimia 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
       }
     ],
     "layout": "single"
