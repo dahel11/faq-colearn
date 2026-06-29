@@ -25,16 +25,38 @@
         "answer": "Untuk login silakan ikuti langkah berikut:\n\n1. Buka aplikasi CoLearn. Aplikasi dapat diunduh melalui Play Store / App Store\n2. Pilih Masuk ke CoLearn\n3. Masukkan nomor HP yang didaftarkan (kode OTP akan dikirim melalui WA)"
       },
       {
-        "id": "M2",
-        "label": "Cara ganti nomor HP",
-        "type": "answer",
-        "answer": "⚠️ PENTING: Untuk menghindari reset data aktivitas belajar di aplikasi seperti data kehadiran dan partisipasi polling, silakan melakukan perubahan nomor HP dari aplikasi CoLearn.\n\nCoFriends bisa mengikuti langkah ini:\n\n1. Buka aplikasi CoLearn\n2. Klik menu ☰ di pojok kiri atas\n3. Klik \"Akunmu\" lalu klik \"Ganti\"\n4. Edit kolom \"Nomor HP\" dengan memasukkan nomor yang baru\n5. Jika sudah sesuai, lalu klik \"Simpan\""
+        "id": "M_KL",
+        "label": "Ada kendala login",
+        "type": "branch",
+        "branch_question": "Apakah kendala loginnya?",
+        "layout": "single",
+        "children": [
+          {
+            "id": "M_KL1",
+            "label": "Tertulis belum ada paket aktif di nomor HP",
+            "type": "answer",
+            "answer": "Hal tersebut terjadi kemungkinan akibat nomor HP yang dimasukkan kurang tepat.\n\nPastikan memasukkan nomor HP murid yang ditulis saat pembelian paket belajar. Silakan masukkan kembali nomor HP murid dengan tepat di aplikasi CoLearn."
+          },
+          {
+            "id": "M_KL2",
+            "label": "Tidak menerima OTP di WA",
+            "type": "urgent",
+            "waMessage": "Halo Kakak Siaga, saya tidak dapat menemukan jawaban di Chatbot dan butuh bantuan lebih lanjut 🙏",
+            "answer": "Untuk kendala OTP, silakan chat Kakak Siaga langsung ya!"
+          }
+        ]
       },
       {
         "id": "M3",
         "label": "Cara download app",
         "type": "answer",
         "answer": "Aplikasi CoLearn dapat didownload melalui link berikut:\n\n✅ Google Play Store: https://bit.ly/CoLearnOnPlayStore, atau\n✅ App Store: https://bit.ly/CoLearnOnAppStore"
+      },
+      {
+        "id": "M2",
+        "label": "Cara ganti nomor HP",
+        "type": "answer",
+        "answer": "⚠️ PENTING: Untuk menghindari reset data aktivitas belajar di aplikasi seperti data kehadiran dan partisipasi polling, silakan melakukan perubahan nomor HP dari aplikasi CoLearn.\n\nCoFriends bisa mengikuti langkah ini:\n\n1. Buka aplikasi CoLearn\n2. Klik menu ☰ di pojok kiri atas\n3. Klik \"Akunmu\" lalu klik \"Ganti\"\n4. Edit kolom \"Nomor HP\" dengan memasukkan nomor yang baru\n5. Jika sudah sesuai, lalu klik \"Simpan\""
       }
     ]
   },
