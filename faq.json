@@ -3,14 +3,14 @@
     "id": "U1",
     "label": "Kendala kelas hari ini",
     "type": "urgent",
-    "waMessage": "Halo Kakak Siaga, aku butuh bantuan — ada kendala kelas hari ini",
+    "waMessage": "Halo Kakak Siaga, saya tidak dapat menemukan jawaban di Chatbot dan butuh bantuan lebih lanjut 🙏",
     "answer": "Untuk kendala kelas hari ini, silakan chat Kakak Siaga langsung ya!"
   },
   {
     "id": "U2",
     "label": "Tanya pembayaran",
     "type": "urgent",
-    "waMessage": "Halo Kakak Siaga, aku mau tanya seputar pembayaran",
+    "waMessage": "Halo Kakak Siaga, saya tidak dapat menemukan jawaban di Chatbot dan butuh bantuan lebih lanjut 🙏",
     "answer": "Untuk tanya pembayaran, silakan chat Kakak Siaga langsung ya!"
   },
   {
@@ -168,6 +168,6 @@
         "answer": "Paket belajar yang tersedia untuk Kelas 11 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas Fisika 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)\n4. Kelas Kimia 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
       }
     ],
-    "layout": "single"
+    "layout": "grid-small"
   }
 ]
