@@ -616,6 +616,7 @@ async function handleAnswer(item) {
 }
 
 async function handleBranch(item) {
+  if (!session.category) session.category = item.label;
   session.question = item.label;
   session.startTime = Date.now();
   addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
@@ -679,6 +680,7 @@ async function handleUrgent(item) {
 }
 
 async function showMainMenu(withIntro = false) {
+  session.category = '';
   if (withIntro) {
     await wait(300); showTyping(); await wait(500); removeTyping();
     addBotBubble('Pilih topik lain di bawah ya:');
