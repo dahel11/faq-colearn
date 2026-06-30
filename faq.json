@@ -169,24 +169,28 @@
         "label": "Kelas 7",
         "type": "answer",
         "answer": "Paket belajar yang tersedia untuk Kelas 7 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M16",
         "label": "Kelas 8",
         "type": "answer",
         "answer": "Paket belajar yang tersedia untuk Kelas 8 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M17",
         "label": "Kelas 9",
         "type": "answer",
         "answer": "Paket belajar yang tersedia untuk Kelas 9 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M18",
         "label": "Kelas 10",
         "type": "answer",
         "answer": "Paket belajar yang tersedia untuk Kelas 10 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M19",
