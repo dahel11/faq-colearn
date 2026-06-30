@@ -607,8 +607,6 @@ async function handleAnswer(item) {
   }
   addBotBubble(html);
   logSession('viewed');
-  await wait(200);
-  addBackToMenuButton();
   const c5Ids = ['M12','M13','M14','M15','M16','M17','M18','M19'];
   if (c5Ids.includes(item.id)) {
     showUpgradeQuestion();
@@ -650,11 +648,12 @@ async function handleCategory(cat, chipsWrap) {
       await handleAnswer(item);
     }
   }, msgs, cat.layout || null);
+  await wait(200);
+  addBackToMenuButton();
 }
 
 async function handleUrgent(item) {
   session.category = item.label;
-  addUserBubble(item.label);
   await wait(400); showTyping(); await wait(600); removeTyping();
   const waMsg = encodeURIComponent(item.waMessage);
   addBotBubble(`${item.answer} 🙋<br><br>
@@ -683,6 +682,7 @@ function showMainMenu() {
   addChips(faqData, async (cat, wrap) => {
     disableChips(wrap);
     if (cat.type === 'urgent') {
+      addUserBubble((cat.emoji ? cat.emoji + ' ' : '') + cat.label);
       await handleUrgent(cat);
     } else {
       await handleCategory(cat, wrap);
