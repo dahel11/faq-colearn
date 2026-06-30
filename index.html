@@ -492,7 +492,7 @@ async function showUpgradeQuestion() {
     backBtn.className = 'chip';
     backBtn.style.cssText = 'background: transparent; color: var(--text-muted); border-color: #E5E7EB; font-size: 12px;';
     backBtn.textContent = '↩ Kembali ke menu utama';
-    backBtn.onclick = () => { backWrap.remove(); showMainMenu(); };
+    backBtn.onclick = () => { backWrap.remove(); showMainMenu(true); };
     backWrap.appendChild(backBtn);
     msgs.appendChild(backWrap);
     msgs.scrollTop = msgs.scrollHeight;
@@ -514,7 +514,7 @@ function addBackToMenuButton() {
   backBtn.className = 'chip';
   backBtn.style.cssText = 'background: transparent; color: var(--text-muted); border-color: #E5E7EB; font-size: 12px;';
   backBtn.textContent = '↩ Kembali ke menu utama';
-  backBtn.onclick = () => { backWrap.remove(); showMainMenu(); };
+  backBtn.onclick = () => { backWrap.remove(); showMainMenu(true); };
   backWrap.appendChild(backBtn);
   msgs.appendChild(backWrap);
   msgs.scrollTop = msgs.scrollHeight;
@@ -672,13 +672,18 @@ async function handleUrgent(item) {
   backBtn.className = 'chip';
   backBtn.style.cssText = 'background: transparent; color: var(--text-muted); border-color: #E5E7EB; font-size: 12px;';
   backBtn.textContent = '← Kembali ke menu';
-  backBtn.onclick = () => { backWrap.remove(); showMainMenu(); };
+  backBtn.onclick = () => { backWrap.remove(); showMainMenu(true); };
   backWrap.appendChild(backBtn);
   msgs.appendChild(backWrap);
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-function showMainMenu() {
+async function showMainMenu(withIntro = false) {
+  if (withIntro) {
+    await wait(300); showTyping(); await wait(500); removeTyping();
+    addBotBubble('Pilih topik lain di bawah ya:');
+    await wait(200);
+  }
   addChips(faqData, async (cat, wrap) => {
     disableChips(wrap);
     if (cat.type === 'urgent') {
