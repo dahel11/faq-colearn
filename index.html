@@ -689,6 +689,8 @@ async function showMainMenu(withIntro = false) {
     if (cat.type === 'urgent') {
       addUserBubble((cat.emoji ? cat.emoji + ' ' : '') + cat.label);
       await handleUrgent(cat);
+    } else if (cat.type === 'branch') {
+      await handleBranch(cat);
     } else {
       await handleCategory(cat, wrap);
     }
