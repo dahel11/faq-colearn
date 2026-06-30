@@ -141,6 +141,12 @@
   .ts-right { text-align: right; margin-right: 4px; }
   .ts-left  { margin-left: 36px; }
 
+  .answer-image {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+    display: block;
+  }
   .warning-box {
     background: #FFF8E1;
     border-left: 3px solid #F59E0B;
@@ -581,6 +587,9 @@ async function handleAnswer(item) {
     html = `<div class="warning-box">⚠️ ${warnLine}</div>${formatAnswer(rest)}`;
   } else {
     html = `<b>${item.label}</b><br><br>${formatAnswer(item.answer)}`;
+  }
+  if (item.image) {
+    html += `<img class="answer-image" src="${item.image}" alt="${item.label}">`;
   }
   addBotBubble(html);
   const c5Ids = ['M12','M13','M14','M15','M16','M17','M18','M19'];
