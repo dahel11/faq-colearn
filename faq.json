@@ -190,14 +190,14 @@
         "label": "Kelas 10",
         "type": "answer",
         "answer": "⚠️ PENTING: Kelas 10 tersedia IPA. Fisika dan Kimia khusus di Kelas 11.\n\nPaket belajar yang tersedia untuk Kelas 10 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
-        "image": "/images/paket-belajar-sma-10-11.png"
+        "image": "/images/paket-belajar-sma-10-dan-11.png"
       },
       {
         "id": "M19",
         "label": "Kelas 11",
         "type": "answer",
         "answer": "⚠️ PENTING: Kelas 11 tersedia Fisika dan Kimia. IPA khusus di Kelas 10.\n\nPaket belajar yang tersedia untuk Kelas 11 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas Fisika 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)\n4. Kelas Kimia 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
-        "image": "/images/paket-belajar-sma-10-11.png"
+        "image": "/images/paket-belajar-sma-10-dan-11.png"
       }
     ],
     "layout": "grid-small"
