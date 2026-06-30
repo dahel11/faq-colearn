@@ -69,7 +69,7 @@
         "id": "M4",
         "label": "Cara pilih jadwal kelas",
         "type": "answer",
-        "answer": "⚠️ PENTING: Opsi ini hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok"
+        "answer": "⚠️ PENTING: Opsi ini hanya untuk murid baru yang belum memilih jadwal di aplikasi CoLearn.\n\nUntuk pilih jadwal silakan ikuti langkah di bawah:\n\n1. Buka aplikasi/website CoLearn\n2. Login menggunakan nomor yang didaftarkan tanpa angka 0 atau +62 di awal. Kode OTP akan dikirimkan melalui WhatsApp\n3. Pilih jadwal bimbel yang cocok",
         "image": "/images/cara-aktivasi-bimbel-v3.png"
       },
       {
@@ -88,7 +88,7 @@
         "id": "M7",
         "label": "Izin tidak hadir kelas",
         "type": "answer",
-        "answer": "Terima kasih atas konfirmasi kabarnya. Untuk kelas yang tidak dihadiri, mohon maaf tidak tersedia kelas pengganti. \n\nNamun tidak perlu khawatir, CoFriends tetap bisa melihat materi kelas yang sudah selesai di aplikasi CoLearn di bagian *Kelas sebelumnya*. Ditunggu kehadiranmu di kelas berikutnya ya!"
+        "answer": "Terima kasih atas konfirmasi kabarnya. Untuk kelas yang tidak dihadiri, mohon maaf tidak tersedia kelas pengganti. \n\nNamun tidak perlu khawatir, CoFriends tetap bisa melihat materi kelas yang sudah selesai di aplikasi CoLearn di bagian *Kelas sebelumnya*. Ditunggu kehadiranmu di kelas berikutnya ya!",
         "image": "/images/tutorial-download-materi.png"
       }
     ]
@@ -102,14 +102,14 @@
         "id": "M8a",
         "label": "Dari HP",
         "type": "answer",
-        "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai"
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn melalui aplikasi CoLearn di HP:\n\n1. Buka aplikasi CoLearn\n2. Klik Bimbel di pojok kiri bawah\n3. Kelas selanjutnya akan muncul paling atas\n4. Tombol Masuk sekarang bisa diklik 5 menit sebelum kelas dimulai",
         "image": "/images/join-class-via-app.jpeg"
       },
       {
         "id": "M8b",
         "label": "Dari Laptop",
         "type": "answer",
-        "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)"
+        "answer": "Untuk mengikuti kelas Bimbel CoLearn menggunakan laptop:\n\n1. Buka browser Chrome atau Firefox\n2. Akses halaman https://colearn.id/\n3. Klik tombol Masuk di pojok kanan atas\n4. Login menggunakan nomor murid yang didaftarkan tanpa angka 0 atau +62 di awal (kode OTP akan dikirim melalui WA)",
         "image": "/images/join-class-via-web.jpeg"
       }
     ]
@@ -129,7 +129,7 @@
         "id": "M9",
         "label": "Lihat PDF materi kelas semester ini",
         "type": "answer",
-        "answer": "Materi kelas dapat diakses sehari setelah kelasnya selesai, di aplikasi CoLearn. Berikut langkahnya:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Geser ke bagian \"Kelas sebelumnya\"\n4. Pilih kelas yang ingin dilihat materinya, lalu klik \"Cek materi kelas\"\n5. Atau klik \"Lihat semua kelas sebelumnya\" untuk akses semua materi kelas yang sudah selesai"
+        "answer": "Materi kelas dapat diakses sehari setelah kelasnya selesai, di aplikasi CoLearn. Berikut langkahnya:\n\n1. Buka aplikasi CoLearn\n2. Klik \"Bimbel\" di pojok kiri bawah\n3. Geser ke bagian \"Kelas sebelumnya\"\n4. Pilih kelas yang ingin dilihat materinya, lalu klik \"Cek materi kelas\"\n5. Atau klik \"Lihat semua kelas sebelumnya\" untuk akses semua materi kelas yang sudah selesai",
         "image": "/images/tutorial-download-materi.png"
       },
       {
@@ -168,35 +168,35 @@
         "id": "M15",
         "label": "Kelas 7",
         "type": "answer",
-        "answer": "Paket belajar yang tersedia untuk Kelas 7 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "answer": "Paket belajar yang tersedia untuk Kelas 7 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
         "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M16",
         "label": "Kelas 8",
         "type": "answer",
-        "answer": "Paket belajar yang tersedia untuk Kelas 8 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "answer": "Paket belajar yang tersedia untuk Kelas 8 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
         "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M17",
         "label": "Kelas 9",
         "type": "answer",
-        "answer": "Paket belajar yang tersedia untuk Kelas 9 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "answer": "Paket belajar yang tersedia untuk Kelas 9 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
         "image": "/images/paket-belajar-smp.png"
       },
       {
         "id": "M18",
         "label": "Kelas 10",
         "type": "answer",
-        "answer": "⚠️ PENTING: Kelas 10 tersedia IPA. Fisika dan Kimia khusus di Kelas 11.\n\nPaket belajar yang tersedia untuk Kelas 10 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "answer": "⚠️ PENTING: Kelas 10 tersedia IPA. Fisika dan Kimia khusus di Kelas 11.\n\nPaket belajar yang tersedia untuk Kelas 10 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas IPA 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
         "image": "/images/paket-belajar-sma-10-11.png"
       },
       {
         "id": "M19",
         "label": "Kelas 11",
         "type": "answer",
-        "answer": "⚠️ PENTING: Kelas 11 tersedia Fisika dan Kimia. IPA khusus di Kelas 10.\n\nPaket belajar yang tersedia untuk Kelas 11 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas Fisika 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)\n4. Kelas Kimia 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)"
+        "answer": "⚠️ PENTING: Kelas 11 tersedia Fisika dan Kimia. IPA khusus di Kelas 10.\n\nPaket belajar yang tersedia untuk Kelas 11 adalah:\n\n1. Matematika 1x/Minggu = Rp90.000\n2. Matematika 2x/Minggu = Rp170.000\n3. Kelas Fisika 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)\n4. Kelas Kimia 1x/Minggu = +Rp80.000 (dapat diambil jika sudah berlangganan paket Matematika)",
         "image": "/images/paket-belajar-sma-10-11.png"
       }
     ],
