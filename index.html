@@ -636,9 +636,12 @@ async function handleBranch(item) {
 
 async function handleCategory(cat, chipsWrap) {
   session.category = cat.label;
+  session.question = '';
+  session.startTime = Date.now();
   addUserBubble((cat.emoji ? cat.emoji + ' ' : '') + cat.label);
   await wait(400); showTyping(); await wait(600); removeTyping();
   addBotBubble(`Oke, soal <b>${cat.label}</b>! Pilih pertanyaanmu:`);
+  logSession('viewed_category');
   await wait(300);
   addChips(cat.children, async (item, wrap) => {
     disableChips(wrap);
