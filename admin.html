@@ -102,72 +102,136 @@
 
   .stat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 900px) {
+    .stat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
   }
   .stat-tile {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 14px;
+    border-radius: 14px;
+    padding: 14px 16px;
+    border-top: 3px solid var(--stat-color, var(--text-muted));
+    box-shadow: 0 1px 2px rgba(16,24,40,0.03);
   }
-  .stat-tile .n { font-size: 20px; font-weight: 700; }
-  .stat-tile .k { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.02em; margin-top: 2px; }
+  .stat-tile .n { font-size: 24px; font-weight: 800; line-height: 1.1; color: var(--stat-color, var(--text)); font-variant-numeric: tabular-nums; }
+  .stat-tile .k { font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; margin-top: 5px; }
 
-  .logs-filters {
+  .logs-toolbar {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
-  .logs-filters select, .logs-filters input {
-    font-family: inherit;
-    padding: 7px 10px;
+  .filter-group {
+    display: flex;
+    align-items: center;
+    background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 13px;
+    border-radius: 10px;
+    overflow: hidden;
   }
-  .logs-total { font-size: 12.5px; color: var(--text-muted); margin-left: auto; }
+  .filter-group > * {
+    font-family: inherit;
+    border: none;
+    background: transparent;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .filter-group > *:focus { outline: 2px solid var(--blue-light); outline-offset: -2px; }
+  .filter-group .sep { width: 1px; align-self: stretch; background: var(--border); padding: 0; }
+  .filter-group input[type="date"] { cursor: text; color: var(--text-muted); }
+  .filter-reset {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 4px;
+  }
+  .filter-reset:hover { color: var(--red); }
+  .logs-total { font-size: 12.5px; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
 
   .logs-table-wrap {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: auto;
+    box-shadow: 0 1px 2px rgba(16,24,40,0.03);
   }
-  .logs-table { width: 100%; border-collapse: collapse; font-size: 12.5px; white-space: nowrap; }
-  .logs-table th, .logs-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
-  .logs-table th { color: var(--text-muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; }
-  .logs-table td { white-space: normal; }
+  .logs-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .logs-table thead th {
+    position: sticky; top: 0;
+    background: var(--gray-bg);
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .logs-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+    color: var(--text);
+  }
+  .logs-table tbody tr:nth-child(even) { background: #FAFBFC; }
+  .logs-table tbody tr:hover { background: var(--blue-light); }
   .logs-table tr:last-child td { border-bottom: none; }
-  .logs-table .breadcrumb-cell { max-width: 280px; color: var(--text-muted); }
+  .logs-table .t-time { color: var(--text-muted); white-space: nowrap; }
+  .logs-table .t-question { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .logs-table .breadcrumb-cell {
+    max-width: 260px;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .logs-table .t-muted { color: var(--text-muted); }
 
   .log-badge {
     display: inline-block;
     font-size: 10.5px;
     font-weight: 700;
-    padding: 2px 8px;
+    padding: 3px 9px;
     border-radius: 999px;
     background: var(--gray-bg);
     color: var(--text-muted);
+    white-space: nowrap;
   }
-  .log-badge.solved { background: #ECFDF5; color: var(--green); }
-  .log-badge.wa_click { background: #ECFDF5; color: var(--wa); }
-  .log-badge.not_solved { background: #FEF2F2; color: var(--red); }
+  .log-badge.solved { background: var(--green); color: #fff; }
+  .log-badge.wa_click { background: #25D366; color: #fff; }
+  .log-badge.not_solved { background: var(--red); color: #fff; }
   .log-badge.viewed_category, .log-badge.viewed { background: var(--blue-light); color: var(--blue-dark); }
-  .log-badge.no_response { background: #FFFBEB; color: var(--amber); }
+  .log-badge.no_response { background: var(--amber); color: #fff; }
+
+  .logs-empty { text-align: center; color: var(--text-muted); padding: 40px 20px; font-size: 13px; }
 
   .logs-pagination {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
-    margin-top: 14px;
+    gap: 16px;
+    margin-top: 16px;
     font-size: 13px;
     color: var(--text-muted);
   }
+  .logs-pagination .btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
   .node {
     background: var(--white);
@@ -274,19 +338,23 @@
   <div id="logs-tab" class="container" style="display:none">
     <div id="logs-summary" class="stat-grid"></div>
 
-    <div class="logs-filters">
-      <select id="logs-filter-outcome">
-        <option value="">Semua outcome</option>
-        <option value="viewed">viewed</option>
-        <option value="viewed_category">viewed_category</option>
-        <option value="solved">solved</option>
-        <option value="not_solved">not_solved</option>
-        <option value="wa_click">wa_click</option>
-        <option value="no_response">no_response</option>
-      </select>
-      <input type="date" id="logs-filter-from" title="Dari tanggal">
-      <input type="date" id="logs-filter-to" title="Sampai tanggal">
-      <button class="btn" id="logs-refresh-btn">Terapkan</button>
+    <div class="logs-toolbar">
+      <div class="filter-group">
+        <select id="logs-filter-outcome">
+          <option value="">Semua outcome</option>
+          <option value="viewed">viewed</option>
+          <option value="viewed_category">viewed_category</option>
+          <option value="solved">solved</option>
+          <option value="not_solved">not_solved</option>
+          <option value="wa_click">wa_click</option>
+          <option value="no_response">no_response</option>
+        </select>
+        <div class="sep"></div>
+        <input type="date" id="logs-filter-from" title="Dari tanggal">
+        <div class="sep"></div>
+        <input type="date" id="logs-filter-to" title="Sampai tanggal">
+      </div>
+      <button class="filter-reset" id="logs-reset-btn">Reset filter</button>
       <span id="logs-total" class="logs-total"></span>
     </div>
 
@@ -578,20 +646,21 @@ function fmtDuration(seconds) {
   return `${Math.floor(seconds / 60)} mnt ${seconds % 60} dtk`;
 }
 
+const OUTCOME_META = {
+  viewed: { label: 'Viewed', color: 'var(--blue-dark)' },
+  viewed_category: { label: 'Viewed category', color: 'var(--blue-dark)' },
+  solved: { label: 'Solved', color: 'var(--green)' },
+  not_solved: { label: 'Not solved', color: 'var(--red)' },
+  wa_click: { label: 'Klik WA', color: '#25D366' },
+  no_response: { label: 'No response', color: 'var(--amber)' },
+};
+
 function renderLogsSummary(summary) {
-  const labels = {
-    viewed: 'Viewed',
-    viewed_category: 'Viewed category',
-    solved: 'Solved',
-    not_solved: 'Not solved',
-    wa_click: 'Klik WA',
-    no_response: 'No response',
-  };
-  document.getElementById('logs-summary').innerHTML = Object.entries(labels)
-    .map(([key, label]) => `
-      <div class="stat-tile">
+  document.getElementById('logs-summary').innerHTML = Object.entries(OUTCOME_META)
+    .map(([key, meta]) => `
+      <div class="stat-tile" style="--stat-color:${meta.color}">
         <div class="n">${summary[key] ?? 0}</div>
-        <div class="k">${label}</div>
+        <div class="k">${meta.label}</div>
       </div>`)
     .join('');
 }
@@ -599,24 +668,25 @@ function renderLogsSummary(summary) {
 function renderLogsTable(rows) {
   const tbody = document.getElementById('logs-tbody');
   if (!rows.length) {
-    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:20px;">Tidak ada log untuk filter ini.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" class="logs-empty">Tidak ada log untuk filter ini.</td></tr>';
     return;
   }
   tbody.innerHTML = rows.map(row => {
     const breadcrumb = Array.isArray(row.breadcrumb) && row.breadcrumb.length
-      ? row.breadcrumb.map(s => escapeHtml(s.label)).join(' → ')
-      : '-';
+      ? row.breadcrumb.map(s => s.label).join(' → ')
+      : '';
     const device = [row.browser, row.os, row.device_type].filter(Boolean).join(' · ') || '-';
     const location = [row.city, row.country].filter(Boolean).join(', ') || '-';
+    const meta = OUTCOME_META[row.outcome];
     return `
       <tr>
-        <td>${fmtDateTime(row.created_at)}</td>
-        <td><span class="log-badge ${row.outcome}">${row.outcome}</span></td>
-        <td>${escapeHtml(row.category) || '-'}${row.question ? '<br><span style="color:var(--text-muted)">' + escapeHtml(row.question) + '</span>' : ''}</td>
-        <td class="breadcrumb-cell" title="${breadcrumb}">${breadcrumb}</td>
-        <td>${fmtDuration(row.processing_time_seconds)}</td>
-        <td>${escapeHtml(device)}</td>
-        <td>${escapeHtml(location)}</td>
+        <td class="t-time">${fmtDateTime(row.created_at)}</td>
+        <td><span class="log-badge ${row.outcome}">${meta ? meta.label : row.outcome}</span></td>
+        <td>${escapeHtml(row.category) || '-'}${row.question ? `<div class="t-question">${escapeHtml(row.question)}</div>` : ''}</td>
+        <td class="breadcrumb-cell t-muted" title="${escapeHtml(breadcrumb)}">${escapeHtml(breadcrumb) || '–'}</td>
+        <td class="t-muted">${fmtDuration(row.processing_time_seconds)}</td>
+        <td class="t-muted">${escapeHtml(device)}</td>
+        <td class="t-muted">${escapeHtml(location)}</td>
       </tr>`;
   }).join('');
 }
@@ -642,12 +712,23 @@ async function loadLogs() {
   }
 }
 
-document.getElementById('logs-refresh-btn').onclick = () => {
+function applyLogsFilters() {
   logsState.outcome = document.getElementById('logs-filter-outcome').value;
   logsState.from = document.getElementById('logs-filter-from').value;
   logsState.to = document.getElementById('logs-filter-to').value;
   logsState.offset = 0;
   loadLogs();
+}
+
+document.getElementById('logs-filter-outcome').addEventListener('change', applyLogsFilters);
+document.getElementById('logs-filter-from').addEventListener('change', applyLogsFilters);
+document.getElementById('logs-filter-to').addEventListener('change', applyLogsFilters);
+
+document.getElementById('logs-reset-btn').onclick = () => {
+  document.getElementById('logs-filter-outcome').value = '';
+  document.getElementById('logs-filter-from').value = '';
+  document.getElementById('logs-filter-to').value = '';
+  applyLogsFilters();
 };
 
 document.getElementById('logs-prev-btn').onclick = () => {
