@@ -3,7 +3,7 @@ const { UAParser } = require('ua-parser-js');
 
 const supabase = createClient(process.env.SUPABASE_BASE_URL, process.env.SUPABASE_ANON_KEY);
 
-const VALID_OUTCOMES = ['viewed', 'viewed_category', 'solved', 'not_solved', 'no_response'];
+const VALID_OUTCOMES = ['viewed', 'viewed_category', 'solved', 'not_solved', 'no_response', 'wa_click'];
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -37,6 +37,7 @@ module.exports = async (req, res) => {
     outcome: body.outcome,
     processing_time_seconds: Number.isFinite(body.processing_time) ? body.processing_time : null,
     page_url: body.page_url || null,
+    breadcrumb: Array.isArray(body.breadcrumb) ? body.breadcrumb : null,
 
     ip_address: ip,
     country: req.headers['x-vercel-ip-country'] || null,

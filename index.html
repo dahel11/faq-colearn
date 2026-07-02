@@ -334,7 +334,8 @@ const session = {
   startTime: Date.now(),
   category: '',
   question: '',
-  outcome: 'no_response'
+  outcome: 'no_response',
+  path: []
 };
 
 // ── Helpers ──────────────────────────────────
@@ -417,6 +418,11 @@ function formatAnswer(text) {
     .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--blue);word-break:break-all;">$1</a>');
 }
 
+// ── Track a step in the navigation breadcrumb ─
+function trackStep(node) {
+  session.path.push({ id: node.id, label: node.label, type: node.type, t: Date.now() });
+}
+
 // ── Log session to Supabase (via /api/log) ────
 async function logSession(outcome) {
   session.outcome = outcome;
@@ -426,7 +432,8 @@ async function logSession(outcome) {
     question:        session.question,
     outcome:         outcome,
     processing_time: Math.round((Date.now() - session.startTime) / 1000),
-    page_url:        window.location.href
+    page_url:        window.location.href,
+    breadcrumb:      session.path
   };
   try {
     await fetch(LOG_URL, {
@@ -436,6 +443,11 @@ async function logSession(outcome) {
     });
   } catch(e) { console.warn('Log failed:', e); }
 }
+
+// ── Track real clicks on any "Chat dengan Kakak Siaga" WA button ──
+msgs.addEventListener('click', (e) => {
+  if (e.target.closest('.btn-wa')) logSession('wa_click');
+});
 
 // ── Solved / not solved flow ──────────────────
 async function showUpgradeQuestion() {
@@ -609,6 +621,7 @@ async function handleSolved(yes, btns) {
 async function handleAnswer(item) {
   session.question = item.label;
   session.startTime = Date.now();
+  trackStep(item);
   await wait(400); showTyping(); await wait(800); removeTyping();
 
   const hasWarning = item.answer.startsWith('⚠️');
@@ -638,6 +651,7 @@ async function handleBranch(item) {
   if (!session.category) session.category = item.label;
   session.question = item.label;
   session.startTime = Date.now();
+  trackStep(item);
   addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
   await wait(400); showTyping(); await wait(700); removeTyping();
   addBotBubble(item.branch_question || 'Pilih salah satu:');
@@ -657,6 +671,7 @@ async function handleCategory(cat, chipsWrap) {
   session.category = cat.label;
   session.question = '';
   session.startTime = Date.now();
+  trackStep(cat);
   addUserBubble((cat.emoji ? cat.emoji + ' ' : '') + cat.label);
   await wait(400); showTyping(); await wait(600); removeTyping();
   addBotBubble(`Oke, soal <b>${cat.label}</b>! Pilih pertanyaanmu:`);
@@ -677,6 +692,8 @@ async function handleCategory(cat, chipsWrap) {
 
 async function handleUrgent(item) {
   session.category = item.label;
+  session.startTime = Date.now();
+  trackStep(item);
   await wait(400); showTyping(); await wait(600); removeTyping();
   const waMsg = encodeURIComponent(item.waMessage);
   addBotBubble(`${item.answer}<br><br>Pesan akan dibalas pada jam operasional: Senin–Jumat 11.00–20.00 WIB & Sabtu 08.00–15.00 WIB.<br><br>
