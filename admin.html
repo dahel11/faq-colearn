@@ -17,6 +17,9 @@
     --text-muted: #6B7280;
     --white: #FFFFFF;
     --red: #DC2626;
+    --green: #16A34A;
+    --amber: #D97706;
+    --wa: #16A34A;
   }
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -75,6 +78,96 @@
 
   .container { max-width: 900px; margin: 0 auto; padding: 20px 24px 80px; }
   .toolbar { display: flex; justify-content: flex-end; margin-bottom: 14px; }
+
+  .tabs {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 4px;
+    padding: 0 24px;
+  }
+  .tab-btn {
+    font-family: inherit;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-tile {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .stat-tile .n { font-size: 20px; font-weight: 700; }
+  .stat-tile .k { font-size: 11.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.02em; margin-top: 2px; }
+
+  .logs-filters {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .logs-filters select, .logs-filters input {
+    font-family: inherit;
+    padding: 7px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .logs-total { font-size: 12.5px; color: var(--text-muted); margin-left: auto; }
+
+  .logs-table-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: auto;
+  }
+  .logs-table { width: 100%; border-collapse: collapse; font-size: 12.5px; white-space: nowrap; }
+  .logs-table th, .logs-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  .logs-table th { color: var(--text-muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .logs-table td { white-space: normal; }
+  .logs-table tr:last-child td { border-bottom: none; }
+  .logs-table .breadcrumb-cell { max-width: 280px; color: var(--text-muted); }
+
+  .log-badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--gray-bg);
+    color: var(--text-muted);
+  }
+  .log-badge.solved { background: #ECFDF5; color: var(--green); }
+  .log-badge.wa_click { background: #ECFDF5; color: var(--wa); }
+  .log-badge.not_solved { background: #FEF2F2; color: var(--red); }
+  .log-badge.viewed_category, .log-badge.viewed { background: var(--blue-light); color: var(--blue-dark); }
+  .log-badge.no_response { background: #FFFBEB; color: var(--amber); }
+
+  .logs-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
 
   .node {
     background: var(--white);
@@ -166,11 +259,59 @@
     <h1>CoLearn FAQ – Admin</h1>
     <button class="btn" id="logout-btn">Keluar</button>
   </div>
-  <div class="container">
+  <div class="tabs">
+    <button class="tab-btn active" id="tab-faq-btn">Isi FAQ</button>
+    <button class="tab-btn" id="tab-logs-btn">Logs</button>
+  </div>
+
+  <div id="faq-tab" class="container">
     <div class="toolbar">
       <button class="btn btn-primary" id="add-root-btn">+ Tambah item baru</button>
     </div>
     <div id="tree"></div>
+  </div>
+
+  <div id="logs-tab" class="container" style="display:none">
+    <div id="logs-summary" class="stat-grid"></div>
+
+    <div class="logs-filters">
+      <select id="logs-filter-outcome">
+        <option value="">Semua outcome</option>
+        <option value="viewed">viewed</option>
+        <option value="viewed_category">viewed_category</option>
+        <option value="solved">solved</option>
+        <option value="not_solved">not_solved</option>
+        <option value="wa_click">wa_click</option>
+        <option value="no_response">no_response</option>
+      </select>
+      <input type="date" id="logs-filter-from" title="Dari tanggal">
+      <input type="date" id="logs-filter-to" title="Sampai tanggal">
+      <button class="btn" id="logs-refresh-btn">Terapkan</button>
+      <span id="logs-total" class="logs-total"></span>
+    </div>
+
+    <div class="logs-table-wrap">
+      <table class="logs-table">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Outcome</th>
+            <th>Kategori / Pertanyaan</th>
+            <th>Jejak navigasi</th>
+            <th>Durasi</th>
+            <th>Perangkat</th>
+            <th>Lokasi</th>
+          </tr>
+        </thead>
+        <tbody id="logs-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="logs-pagination">
+      <button class="btn" id="logs-prev-btn">← Sebelumnya</button>
+      <span id="logs-page-label"></span>
+      <button class="btn" id="logs-next-btn">Selanjutnya →</button>
+    </div>
   </div>
 </div>
 
@@ -410,6 +551,133 @@ async function deleteNode(node) {
     alert(e.message);
   }
 }
+
+// ── Logs tab ───────────────────────────────────
+const logsState = { offset: 0, limit: 50, outcome: '', from: '', to: '' };
+
+async function apiGet(url) {
+  const res = await fetch(url);
+  if (res.status === 401) {
+    showLogin();
+    throw new Error('Sesi berakhir, silakan masuk lagi.');
+  }
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || `Request gagal (${res.status})`);
+  }
+  return res.json();
+}
+
+function fmtDateTime(iso) {
+  return new Date(iso).toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
+}
+
+function fmtDuration(seconds) {
+  if (seconds === null || seconds === undefined) return '-';
+  if (seconds < 60) return `${seconds} dtk`;
+  return `${Math.floor(seconds / 60)} mnt ${seconds % 60} dtk`;
+}
+
+function renderLogsSummary(summary) {
+  const labels = {
+    viewed: 'Viewed',
+    viewed_category: 'Viewed category',
+    solved: 'Solved',
+    not_solved: 'Not solved',
+    wa_click: 'Klik WA',
+    no_response: 'No response',
+  };
+  document.getElementById('logs-summary').innerHTML = Object.entries(labels)
+    .map(([key, label]) => `
+      <div class="stat-tile">
+        <div class="n">${summary[key] ?? 0}</div>
+        <div class="k">${label}</div>
+      </div>`)
+    .join('');
+}
+
+function renderLogsTable(rows) {
+  const tbody = document.getElementById('logs-tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:20px;">Tidak ada log untuk filter ini.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(row => {
+    const breadcrumb = Array.isArray(row.breadcrumb) && row.breadcrumb.length
+      ? row.breadcrumb.map(s => escapeHtml(s.label)).join(' → ')
+      : '-';
+    const device = [row.browser, row.os, row.device_type].filter(Boolean).join(' · ') || '-';
+    const location = [row.city, row.country].filter(Boolean).join(', ') || '-';
+    return `
+      <tr>
+        <td>${fmtDateTime(row.created_at)}</td>
+        <td><span class="log-badge ${row.outcome}">${row.outcome}</span></td>
+        <td>${escapeHtml(row.category) || '-'}${row.question ? '<br><span style="color:var(--text-muted)">' + escapeHtml(row.question) + '</span>' : ''}</td>
+        <td class="breadcrumb-cell" title="${breadcrumb}">${breadcrumb}</td>
+        <td>${fmtDuration(row.processing_time_seconds)}</td>
+        <td>${escapeHtml(device)}</td>
+        <td>${escapeHtml(location)}</td>
+      </tr>`;
+  }).join('');
+}
+
+async function loadLogs() {
+  const params = new URLSearchParams({ limit: logsState.limit, offset: logsState.offset });
+  if (logsState.outcome) params.set('outcome', logsState.outcome);
+  if (logsState.from) params.set('from', logsState.from);
+  if (logsState.to) params.set('to', logsState.to);
+
+  try {
+    const data = await apiGet(`/api/admin/logs?${params.toString()}`);
+    renderLogsSummary(data.summary);
+    renderLogsTable(data.rows);
+    const from = data.total === 0 ? 0 : logsState.offset + 1;
+    const to = Math.min(logsState.offset + logsState.limit, data.total);
+    document.getElementById('logs-total').textContent = `${data.total} log total`;
+    document.getElementById('logs-page-label').textContent = `${from}–${to} dari ${data.total}`;
+    document.getElementById('logs-prev-btn').disabled = logsState.offset === 0;
+    document.getElementById('logs-next-btn').disabled = to >= data.total;
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+document.getElementById('logs-refresh-btn').onclick = () => {
+  logsState.outcome = document.getElementById('logs-filter-outcome').value;
+  logsState.from = document.getElementById('logs-filter-from').value;
+  logsState.to = document.getElementById('logs-filter-to').value;
+  logsState.offset = 0;
+  loadLogs();
+};
+
+document.getElementById('logs-prev-btn').onclick = () => {
+  logsState.offset = Math.max(0, logsState.offset - logsState.limit);
+  loadLogs();
+};
+
+document.getElementById('logs-next-btn').onclick = () => {
+  logsState.offset += logsState.limit;
+  loadLogs();
+};
+
+let logsLoadedOnce = false;
+document.getElementById('tab-faq-btn').onclick = () => {
+  document.getElementById('tab-faq-btn').classList.add('active');
+  document.getElementById('tab-logs-btn').classList.remove('active');
+  document.getElementById('faq-tab').style.display = 'block';
+  document.getElementById('logs-tab').style.display = 'none';
+};
+
+document.getElementById('tab-logs-btn').onclick = () => {
+  document.getElementById('tab-logs-btn').classList.add('active');
+  document.getElementById('tab-faq-btn').classList.remove('active');
+  document.getElementById('logs-tab').style.display = 'block';
+  document.getElementById('faq-tab').style.display = 'none';
+  if (!logsLoadedOnce) {
+    logsLoadedOnce = true;
+    loadLogs();
+  }
+};
 
 document.getElementById('add-root-btn').onclick = () => addChild(null);
 
