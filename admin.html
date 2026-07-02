@@ -322,15 +322,16 @@ function wireForm(formHolder, node) {
   form.querySelector('[data-form-act="cancel"]').onclick = () => { formHolder.innerHTML = ''; };
   form.querySelector('[data-form-act="save"]').onclick = async () => {
     const errEl = form.querySelector('.node-form-error');
+    const field = name => form.querySelector(`[name="${name}"]`).value;
     const payload = {
       id: node.id,
-      label: form.label.value.trim(),
-      type: form.type.value,
-      answer: form.answer.value,
-      wa_message: form.wa_message.value,
-      branch_question: form.branch_question.value,
-      image: form.image.value,
-      layout: form.layout.value,
+      label: field('label').trim(),
+      type: field('type'),
+      answer: field('answer'),
+      wa_message: field('wa_message'),
+      branch_question: field('branch_question'),
+      image: field('image'),
+      layout: field('layout'),
     };
     try {
       await api('PUT', payload);
