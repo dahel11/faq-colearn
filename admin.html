@@ -102,6 +102,8 @@
     flex-shrink: 0;
   }
   .node-badge.urgent { background: #FFF5F5; color: #991B1B; }
+  .node-summary { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; cursor: pointer; border-radius: 8px; padding: 4px 6px; margin: -4px -6px; }
+  .node-summary:hover { background: var(--gray-bg); }
   .node-label { font-weight: 600; font-size: 13.5px; flex: 1; min-width: 120px; }
   .node-id { color: var(--text-muted); font-size: 11.5px; font-weight: 400; margin-left: 6px; }
   .node-actions { display: flex; gap: 4px; flex-shrink: 0; }
@@ -228,12 +230,13 @@ function renderNode(node) {
   const row = document.createElement('div');
   row.className = 'node-row';
   row.innerHTML = `
-    <span class="node-badge${node.type === 'urgent' ? ' urgent' : ''}">${node.type}</span>
-    <span class="node-label">${escapeHtml(node.label)}<span class="node-id">${node.id}</span></span>
+    <div class="node-summary">
+      <span class="node-badge${node.type === 'urgent' ? ' urgent' : ''}">${node.type}</span>
+      <span class="node-label">${escapeHtml(node.label)}<span class="node-id">${node.id}</span></span>
+    </div>
     <div class="node-actions">
       <button class="btn btn-icon" data-act="up" ${idx <= 0 ? 'disabled' : ''} title="Naik">↑</button>
       <button class="btn btn-icon" data-act="down" ${idx >= siblings.length - 1 ? 'disabled' : ''} title="Turun">↓</button>
-      <button class="btn btn-icon" data-act="edit" title="Edit">✎</button>
       <button class="btn btn-icon" data-act="add-child" title="Tambah sub-item">+</button>
       <button class="btn btn-icon btn-danger" data-act="delete" title="Hapus">🗑</button>
     </div>`;
@@ -247,13 +250,15 @@ function renderNode(node) {
   childrenOf(node.id).forEach(child => childrenHolder.appendChild(renderNode(child)));
   el.appendChild(childrenHolder);
 
-  row.querySelector('[data-act="up"]').onclick = () => moveNode(siblings, idx, -1);
-  row.querySelector('[data-act="down"]').onclick = () => moveNode(siblings, idx, 1);
-  row.querySelector('[data-act="edit"]').onclick = () => {
+  const toggleForm = () => {
     const wasOpen = !!formHolder.innerHTML;
     formHolder.innerHTML = wasOpen ? '' : renderFormHtml(node);
     if (!wasOpen) wireForm(formHolder, node);
   };
+
+  row.querySelector('.node-summary').onclick = toggleForm;
+  row.querySelector('[data-act="up"]').onclick = () => moveNode(siblings, idx, -1);
+  row.querySelector('[data-act="down"]').onclick = () => moveNode(siblings, idx, 1);
   row.querySelector('[data-act="add-child"]').onclick = () => addChild(node.id);
   row.querySelector('[data-act="delete"]').onclick = () => deleteNode(node);
 
