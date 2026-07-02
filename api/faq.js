@@ -44,6 +44,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
+  // Short cache: absorbs traffic bursts but keeps admin edits visible within seconds.
+  res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=30');
   res.status(200).json(buildTree(data));
 };
