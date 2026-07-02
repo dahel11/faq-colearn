@@ -299,8 +299,8 @@
 // ─────────────────────────────────────────────
 // CONFIG — ganti sesuai kebutuhan
 // ─────────────────────────────────────────────
-const FAQ_JSON_URL = './faq.json';
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxj4gJhLCn1IQ97kkZgHd4Clf4AKffxVrsaa0DFzhLCrx8gcWMYTPWFQIuxAOr9CHA4VA/exec'; // ← isi setelah deploy GAS
+const FAQ_JSON_URL = '/api/faq';
+const LOG_URL = '/api/log';
 const WA_NUMBER = '6281119954075'; // ← ganti dengan nomor WA Kakak Siaga
 // ─────────────────────────────────────────────
 
@@ -396,22 +396,20 @@ function formatAnswer(text) {
     .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color:var(--blue);word-break:break-all;">$1</a>');
 }
 
-// ── Log session to GAS ────────────────────────
+// ── Log session to Supabase (via /api/log) ────
 async function logSession(outcome) {
   session.outcome = outcome;
   const payload = {
     session_id:      session.id,
-    timestamp:       new Date().toISOString(),
     category:        session.category,
     question:        session.question,
     outcome:         outcome,
-    processing_time: Math.round((Date.now() - session.startTime) / 1000)
+    processing_time: Math.round((Date.now() - session.startTime) / 1000),
+    page_url:        window.location.href
   };
-  if (GAS_URL === 'GANTI_DENGAN_URL_GAS_WEB_APP') return; // skip if not configured
   try {
-    await fetch(GAS_URL, {
+    await fetch(LOG_URL, {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
