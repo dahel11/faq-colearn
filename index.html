@@ -46,19 +46,24 @@
     overflow: hidden;
   }
 
-  /* ── Tablet / small desktop: give the widget a bit more room ── */
+  /* ── Tablet / desktop: fill the viewport height, no floating card ── */
   @media (min-width: 768px) {
+    body { padding: 0; }
     .phone-frame {
-      width: min(420px, 94vw);
-      height: min(800px, 92vh);
+      width: 100%;
+      max-width: 640px;
+      height: 100vh;
+      border-radius: 0;
+      box-shadow: none;
+      border-left: 1px solid rgba(0,0,0,0.06);
+      border-right: 1px solid rgba(0,0,0,0.06);
     }
   }
 
-  /* ── Large desktop: wider widget, easier to read ── */
+  /* ── Large desktop: a bit wider so it doesn't feel cramped ── */
   @media (min-width: 1200px) {
     .phone-frame {
-      width: 460px;
-      height: min(860px, 90vh);
+      max-width: 760px;
     }
   }
 
