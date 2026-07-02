@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoLearn FAQ – Admin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #1E5AF6;
+    --blue-dark: #1448D4;
+    --blue-light: #EBF1FF;
+    --gray-bg: #F5F6FA;
+    --border: #E5E7EB;
+    --text: #1A1A2E;
+    --text-muted: #6B7280;
+    --white: #FFFFFF;
+    --red: #DC2626;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar h1 { font-size: 16px; font-weight: 700; }
+  .btn {
+    font-family: inherit;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .btn:hover { border-color: var(--blue); color: var(--blue); }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn:disabled:hover { border-color: var(--border); color: var(--text); }
+  .btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; }
+  .btn-danger { color: var(--red); border-color: #FCA5A5; }
+  .btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
+  .btn-icon { padding: 6px 9px; font-size: 13px; }
+
+  #login-view {
+    max-width: 360px;
+    margin: 90px auto;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+  #login-view h1 { font-size: 18px; margin-bottom: 16px; }
+  #login-view input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 10px;
+  }
+  #login-error { color: var(--red); font-size: 13px; margin-bottom: 10px; min-height: 16px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 20px 24px 80px; }
+  .toolbar { display: flex; justify-content: flex-end; margin-bottom: 14px; }
+
+  .node {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .node-children { margin-left: 26px; margin-top: 8px; }
+  .node-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+  }
+  .node-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    flex-shrink: 0;
+  }
+  .node-badge.urgent { background: #FFF5F5; color: #991B1B; }
+  .node-label { font-weight: 600; font-size: 13.5px; flex: 1; min-width: 120px; }
+  .node-id { color: var(--text-muted); font-size: 11.5px; font-weight: 400; margin-left: 6px; }
+  .node-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+  .node-form {
+    padding: 0 12px 14px;
+    display: grid;
+    gap: 8px;
+  }
+  .node-form label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .node-form input, .node-form select, .node-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .node-form textarea { min-height: 90px; resize: vertical; }
+  .node-form .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .node-form .row > div { flex: 1; min-width: 200px; }
+  .node-form-actions { display: flex; gap: 8px; align-items: center; margin-top: 2px; }
+
+  #empty-state { color: var(--text-muted); font-size: 13px; padding: 20px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div id="login-view">
+  <h1>Masuk ke FAQ Admin</h1>
+  <input type="password" id="login-password" placeholder="Password admin" autofocus>
+  <div id="login-error"></div>
+  <button class="btn btn-primary" id="login-submit" style="width:100%">Masuk</button>
+</div>
+
+<div id="editor-view" style="display:none">
+  <div class="topbar">
+    <h1>CoLearn FAQ – Admin</h1>
+    <button class="btn" id="logout-btn">Keluar</button>
+  </div>
+  <div class="container">
+    <div class="toolbar">
+      <button class="btn btn-primary" id="add-root-btn">+ Tambah item baru</button>
+    </div>
+    <div id="tree"></div>
+  </div>
+</div>
+
+<script>
+const API = '/api/admin/faq-items';
+let items = [];
+
+const loginView = document.getElementById('login-view');
+const editorView = document.getElementById('editor-view');
+const tree = document.getElementById('tree');
+
+function escapeHtml(s) {
+  return (s ?? '').toString()
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+async function api(method, body) {
+  const url = API + (method === 'DELETE' && body?.id ? `?id=${encodeURIComponent(body.id)}` : '');
+  const res = await fetch(url, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: method === 'GET' ? undefined : JSON.stringify(body || {}),
+  });
+  if (res.status === 401) {
+    showLogin();
+    throw new Error('Sesi berakhir, silakan masuk lagi.');
+  }
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || `Request gagal (${res.status})`);
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+function showLogin() {
+  editorView.style.display = 'none';
+  loginView.style.display = 'block';
+}
+
+function showEditor() {
+  loginView.style.display = 'none';
+  editorView.style.display = 'block';
+}
+
+async function loadItems() {
+  items = await api('GET');
+  renderTree();
+}
+
+function childrenOf(parentId) {
+  return items
+    .filter(i => (i.parent_id || null) === parentId)
+    .sort((a, b) => a.position - b.position);
+}
+
+function renderTree() {
+  const roots = childrenOf(null);
+  tree.innerHTML = '';
+  if (!roots.length) {
+    tree.innerHTML = '<div id="empty-state">Belum ada item FAQ.</div>';
+    return;
+  }
+  roots.forEach(node => tree.appendChild(renderNode(node)));
+}
+
+function renderNode(node) {
+  const el = document.createElement('div');
+  el.className = 'node';
+
+  const siblings = childrenOf(node.parent_id || null);
+  const idx = siblings.findIndex(s => s.id === node.id);
+
+  const row = document.createElement('div');
+  row.className = 'node-row';
+  row.innerHTML = `
+    <span class="node-badge${node.type === 'urgent' ? ' urgent' : ''}">${node.type}</span>
+    <span class="node-label">${escapeHtml(node.label)}<span class="node-id">${node.id}</span></span>
+    <div class="node-actions">
+      <button class="btn btn-icon" data-act="up" ${idx <= 0 ? 'disabled' : ''} title="Naik">↑</button>
+      <button class="btn btn-icon" data-act="down" ${idx >= siblings.length - 1 ? 'disabled' : ''} title="Turun">↓</button>
+      <button class="btn btn-icon" data-act="edit" title="Edit">✎</button>
+      <button class="btn btn-icon" data-act="add-child" title="Tambah sub-item">+</button>
+      <button class="btn btn-icon btn-danger" data-act="delete" title="Hapus">🗑</button>
+    </div>`;
+  el.appendChild(row);
+
+  const formHolder = document.createElement('div');
+  el.appendChild(formHolder);
+
+  const childrenHolder = document.createElement('div');
+  childrenHolder.className = 'node-children';
+  childrenOf(node.id).forEach(child => childrenHolder.appendChild(renderNode(child)));
+  el.appendChild(childrenHolder);
+
+  row.querySelector('[data-act="up"]').onclick = () => moveNode(siblings, idx, -1);
+  row.querySelector('[data-act="down"]').onclick = () => moveNode(siblings, idx, 1);
+  row.querySelector('[data-act="edit"]').onclick = () => {
+    const wasOpen = !!formHolder.innerHTML;
+    formHolder.innerHTML = wasOpen ? '' : renderFormHtml(node);
+    if (!wasOpen) wireForm(formHolder, node);
+  };
+  row.querySelector('[data-act="add-child"]').onclick = () => addChild(node.id);
+  row.querySelector('[data-act="delete"]').onclick = () => deleteNode(node);
+
+  return el;
+}
+
+function renderFormHtml(node) {
+  return `
+    <div class="node-form">
+      <div class="row">
+        <div>
+          <label>Label</label>
+          <input name="label" value="${escapeHtml(node.label)}">
+        </div>
+        <div>
+          <label>Tipe</label>
+          <select name="type">
+            ${['category', 'branch', 'answer', 'urgent'].map(t =>
+              `<option value="${t}" ${node.type === t ? 'selected' : ''}>${t}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label>Jawaban (mendukung baris baru, *tebal*, dan link)</label>
+        <textarea name="answer">${escapeHtml(node.answer)}</textarea>
+      </div>
+      <div class="row">
+        <div>
+          <label>Pesan WhatsApp (khusus tipe urgent)</label>
+          <input name="wa_message" value="${escapeHtml(node.wa_message)}">
+        </div>
+        <div>
+          <label>Pertanyaan cabang (khusus tipe branch)</label>
+          <input name="branch_question" value="${escapeHtml(node.branch_question)}">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Path gambar</label>
+          <input name="image" value="${escapeHtml(node.image)}" placeholder="/images/contoh.png">
+        </div>
+        <div>
+          <label>Layout sub-item (untuk category/branch)</label>
+          <select name="layout">
+            <option value="">default (grid 2 kolom)</option>
+            <option value="single" ${node.layout === 'single' ? 'selected' : ''}>single</option>
+            <option value="grid-small" ${node.layout === 'grid-small' ? 'selected' : ''}>grid-small</option>
+          </select>
+        </div>
+      </div>
+      <div class="node-form-actions">
+        <button class="btn btn-primary" data-form-act="save">Simpan</button>
+        <button class="btn" data-form-act="cancel">Batal</button>
+        <span class="node-form-error" style="color:#DC2626;font-size:12px;"></span>
+      </div>
+    </div>`;
+}
+
+function wireForm(formHolder, node) {
+  const form = formHolder.querySelector('.node-form');
+  form.querySelector('[data-form-act="cancel"]').onclick = () => { formHolder.innerHTML = ''; };
+  form.querySelector('[data-form-act="save"]').onclick = async () => {
+    const errEl = form.querySelector('.node-form-error');
+    const payload = {
+      id: node.id,
+      label: form.label.value.trim(),
+      type: form.type.value,
+      answer: form.answer.value,
+      wa_message: form.wa_message.value,
+      branch_question: form.branch_question.value,
+      image: form.image.value,
+      layout: form.layout.value,
+    };
+    try {
+      await api('PUT', payload);
+      formHolder.innerHTML = '';
+      await loadItems();
+    } catch (e) {
+      errEl.textContent = e.message;
+    }
+  };
+}
+
+async function moveNode(siblings, idx, dir) {
+  const a = siblings[idx];
+  const b = siblings[idx + dir];
+  if (!a || !b) return;
+  try {
+    await api('PUT', { id: a.id, position: b.position });
+    await api('PUT', { id: b.id, position: a.position });
+    await loadItems();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function addChild(parentId) {
+  const id = prompt('ID unik untuk item baru (contoh: M20):');
+  if (!id) return;
+  const siblingsCount = childrenOf(parentId).length;
+  try {
+    await api('POST', {
+      id: id.trim(),
+      parent_id: parentId,
+      position: siblingsCount,
+      type: 'answer',
+      label: 'Pertanyaan baru',
+    });
+    await loadItems();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+async function deleteNode(node) {
+  const hasChildren = childrenOf(node.id).length > 0;
+  const msg = hasChildren
+    ? `Hapus "${node.label}" beserta semua sub-item di dalamnya?`
+    : `Hapus "${node.label}"?`;
+  if (!confirm(msg)) return;
+  try {
+    await api('DELETE', { id: node.id });
+    await loadItems();
+  } catch (e) {
+    alert(e.message);
+  }
+}
+
+document.getElementById('add-root-btn').onclick = () => addChild(null);
+
+document.getElementById('logout-btn').onclick = async () => {
+  await fetch('/api/admin/logout', { method: 'POST' });
+  showLogin();
+};
+
+document.getElementById('login-submit').onclick = async () => {
+  const password = document.getElementById('login-password').value;
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  try {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || 'Gagal masuk');
+    }
+    showEditor();
+    await loadItems();
+  } catch (e) {
+    errEl.textContent = e.message;
+  }
+};
+
+document.getElementById('login-password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('login-submit').click();
+});
+
+// If a valid session cookie already exists, skip the login screen.
+(async () => {
+  try {
+    await loadItems();
+    showEditor();
+  } catch {
+    showLogin();
+  }
+})();
+</script>
+</body>
+</html>
