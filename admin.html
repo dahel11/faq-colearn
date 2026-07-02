@@ -113,6 +113,22 @@
     display: grid;
     gap: 8px;
   }
+  .spinner {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: -2px;
+    margin-right: 6px;
+  }
+  .btn:not(.btn-primary) .spinner {
+    border-color: rgba(0,0,0,0.15);
+    border-top-color: var(--text-muted);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
   .node-form label {
     font-size: 12px;
     font-weight: 600;
@@ -320,7 +336,8 @@ function renderFormHtml(node) {
 function wireForm(formHolder, node) {
   const form = formHolder.querySelector('.node-form');
   form.querySelector('[data-form-act="cancel"]').onclick = () => { formHolder.innerHTML = ''; };
-  form.querySelector('[data-form-act="save"]').onclick = async () => {
+  const saveBtn = form.querySelector('[data-form-act="save"]');
+  saveBtn.onclick = async () => {
     const errEl = form.querySelector('.node-form-error');
     const field = name => form.querySelector(`[name="${name}"]`).value;
     const payload = {
@@ -333,12 +350,18 @@ function wireForm(formHolder, node) {
       image: field('image'),
       layout: field('layout'),
     };
+    errEl.textContent = '';
+    saveBtn.disabled = true;
+    const originalLabel = saveBtn.textContent;
+    saveBtn.innerHTML = '<span class="spinner"></span>Menyimpan...';
     try {
       await api('PUT', payload);
       formHolder.innerHTML = '';
       await loadItems();
     } catch (e) {
       errEl.textContent = e.message;
+      saveBtn.disabled = false;
+      saveBtn.textContent = originalLabel;
     }
   };
 }
