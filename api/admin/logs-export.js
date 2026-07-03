@@ -29,6 +29,21 @@ const COLUMNS = [
 
 const BATCH_SIZE = 1000;
 
+const HEADER_LABELS = { created_at: 'created_at (WIB)' };
+
+function toJakartaString(isoString) {
+  if (!isoString) return '';
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date(isoString));
+  const map = {};
+  parts.forEach(p => { map[p.type] = p.value; });
+  return `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}:${map.second}`;
+}
+
 function csvValue(value) {
   if (value === null || value === undefined) return '';
   let s;
@@ -87,9 +102,9 @@ module.exports = async (req, res) => {
     offset += BATCH_SIZE;
   }
 
-  const lines = [COLUMNS.join(',')];
+  const lines = [COLUMNS.map(col => csvValue(HEADER_LABELS[col] || col)).join(',')];
   for (const row of rows) {
-    lines.push(COLUMNS.map(col => csvValue(row[col])).join(','));
+    lines.push(COLUMNS.map(col => csvValue(col === 'created_at' ? toJakartaString(row.created_at) : row[col])).join(','));
   }
   const csv = '﻿' + lines.join('\r\n');
 
