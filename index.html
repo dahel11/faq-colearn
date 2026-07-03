@@ -691,7 +691,7 @@ async function handleCategory(cat, chipsWrap) {
 }
 
 async function handleUrgent(item) {
-  session.category = item.label;
+  if (!session.category) session.category = item.label;
   session.startTime = Date.now();
   trackStep(item);
   await wait(400); showTyping(); await wait(600); removeTyping();
