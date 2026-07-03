@@ -162,6 +162,24 @@
   }
   .filter-reset:hover { color: var(--red); }
   .logs-total { font-size: 12.5px; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+  .logs-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 70px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .spinner-lg {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(16,24,40,0.12);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
 
   .logs-table-wrap {
     background: var(--white);
@@ -336,49 +354,54 @@
   </div>
 
   <div id="logs-tab" class="container" style="display:none">
-    <div id="logs-summary" class="stat-grid"></div>
+    <div id="logs-loading" class="logs-loading"><span class="spinner-lg"></span>Memuat log...</div>
 
-    <div class="logs-toolbar">
-      <div class="filter-group">
-        <select id="logs-filter-outcome">
-          <option value="">Semua outcome</option>
-          <option value="viewed">viewed</option>
-          <option value="viewed_category">viewed_category</option>
-          <option value="solved">solved</option>
-          <option value="not_solved">not_solved</option>
-          <option value="wa_click">wa_click</option>
-          <option value="no_response">no_response</option>
-        </select>
-        <div class="sep"></div>
-        <input type="date" id="logs-filter-from" title="Dari tanggal">
-        <div class="sep"></div>
-        <input type="date" id="logs-filter-to" title="Sampai tanggal">
+    <div id="logs-content">
+      <div id="logs-summary" class="stat-grid"></div>
+
+      <div class="logs-toolbar">
+        <div class="filter-group">
+          <select id="logs-filter-outcome">
+            <option value="">Semua outcome</option>
+            <option value="viewed">viewed</option>
+            <option value="viewed_category">viewed_category</option>
+            <option value="solved">solved</option>
+            <option value="not_solved">not_solved</option>
+            <option value="wa_click">wa_click</option>
+            <option value="no_response">no_response</option>
+          </select>
+          <div class="sep"></div>
+          <input type="date" id="logs-filter-from" title="Dari tanggal">
+          <div class="sep"></div>
+          <input type="date" id="logs-filter-to" title="Sampai tanggal">
+        </div>
+        <button class="filter-reset" id="logs-reset-btn">Reset filter</button>
+        <span id="logs-total" class="logs-total"></span>
+        <button class="btn" id="logs-export-btn">⬇ Export CSV</button>
       </div>
-      <button class="filter-reset" id="logs-reset-btn">Reset filter</button>
-      <span id="logs-total" class="logs-total"></span>
-    </div>
 
-    <div class="logs-table-wrap">
-      <table class="logs-table">
-        <thead>
-          <tr>
-            <th>Waktu</th>
-            <th>Outcome</th>
-            <th>Kategori / Pertanyaan</th>
-            <th>Jejak navigasi</th>
-            <th>Durasi</th>
-            <th>Perangkat</th>
-            <th>Lokasi</th>
-          </tr>
-        </thead>
-        <tbody id="logs-tbody"></tbody>
-      </table>
-    </div>
+      <div class="logs-table-wrap">
+        <table class="logs-table">
+          <thead>
+            <tr>
+              <th>Waktu</th>
+              <th>Outcome</th>
+              <th>Kategori / Pertanyaan</th>
+              <th>Jejak navigasi</th>
+              <th>Durasi</th>
+              <th>Perangkat</th>
+              <th>Lokasi</th>
+            </tr>
+          </thead>
+          <tbody id="logs-tbody"></tbody>
+        </table>
+      </div>
 
-    <div class="logs-pagination">
-      <button class="btn" id="logs-prev-btn">← Sebelumnya</button>
-      <span id="logs-page-label"></span>
-      <button class="btn" id="logs-next-btn">Selanjutnya →</button>
+      <div class="logs-pagination">
+        <button class="btn" id="logs-prev-btn">← Sebelumnya</button>
+        <span id="logs-page-label"></span>
+        <button class="btn" id="logs-next-btn">Selanjutnya →</button>
+      </div>
     </div>
   </div>
 </div>
@@ -749,14 +772,61 @@ document.getElementById('tab-faq-btn').onclick = () => {
   document.getElementById('logs-tab').style.display = 'none';
 };
 
-document.getElementById('tab-logs-btn').onclick = () => {
+document.getElementById('tab-logs-btn').onclick = async () => {
   document.getElementById('tab-logs-btn').classList.add('active');
   document.getElementById('tab-faq-btn').classList.remove('active');
   document.getElementById('logs-tab').style.display = 'block';
   document.getElementById('faq-tab').style.display = 'none';
   if (!logsLoadedOnce) {
     logsLoadedOnce = true;
-    loadLogs();
+    document.getElementById('logs-loading').style.display = 'flex';
+    document.getElementById('logs-content').style.display = 'none';
+    try {
+      await loadLogs();
+    } finally {
+      document.getElementById('logs-loading').style.display = 'none';
+      document.getElementById('logs-content').style.display = 'block';
+    }
+  }
+};
+
+document.getElementById('logs-export-btn').onclick = async () => {
+  const btn = document.getElementById('logs-export-btn');
+  const originalLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Mengekspor...';
+  try {
+    const params = new URLSearchParams();
+    if (logsState.outcome) params.set('outcome', logsState.outcome);
+    if (logsState.from) params.set('from', logsState.from);
+    if (logsState.to) params.set('to', logsState.to);
+
+    const res = await fetch(`/api/admin/logs-export?${params.toString()}`);
+    if (res.status === 401) {
+      showLogin();
+      throw new Error('Sesi berakhir, silakan masuk lagi.');
+    }
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || `Request gagal (${res.status})`);
+    }
+    const blob = await res.blob();
+    const match = /filename="([^"]+)"/.exec(res.headers.get('Content-Disposition') || '');
+    const filename = match ? match[1] : 'faq_logs.csv';
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalLabel;
   }
 };
 
