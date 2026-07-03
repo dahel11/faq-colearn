@@ -42,7 +42,12 @@ module.exports = async (req, res) => {
   }
 
   const summaryResults = await Promise.all(
-    OUTCOMES.map(o => supabase.from('faq_logs').select('*', { count: 'exact', head: true }).eq('outcome', o))
+    OUTCOMES.map(o => {
+      let summaryQuery = supabase.from('faq_logs').select('*', { count: 'exact', head: true }).eq('outcome', o);
+      if (from) summaryQuery = summaryQuery.gte('created_at', from);
+      if (to) summaryQuery = summaryQuery.lte('created_at', to);
+      return summaryQuery;
+    })
   );
   const summary = {};
   OUTCOMES.forEach((o, i) => {
