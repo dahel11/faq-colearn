@@ -180,6 +180,19 @@
     border-radius: 50%;
     animation: spin 0.6s linear infinite;
   }
+  .spinner-inline {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border: 2px solid rgba(16,24,40,0.15);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: -2px;
+    margin-right: 6px;
+  }
+  .logs-table-wrap { transition: opacity 0.15s; }
+  .logs-table-wrap.is-loading { opacity: 0.45; pointer-events: none; }
 
   .logs-table-wrap {
     background: var(--white);
@@ -386,7 +399,7 @@
         <button class="btn" id="logs-next-btn">Selanjutnya →</button>
       </div>
 
-      <div class="logs-table-wrap">
+      <div class="logs-table-wrap" id="logs-table-wrap">
         <table class="logs-table">
           <thead>
             <tr>
@@ -736,6 +749,16 @@ async function loadLogs() {
   params.set('limit', logsState.limit);
   params.set('offset', logsState.offset);
 
+  const tableWrap = document.getElementById('logs-table-wrap');
+  const prevBtn = document.getElementById('logs-prev-btn');
+  const nextBtn = document.getElementById('logs-next-btn');
+  const pageLabel = document.getElementById('logs-page-label');
+
+  tableWrap.classList.add('is-loading');
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
+  pageLabel.innerHTML = '<span class="spinner-inline"></span>Memuat...';
+
   try {
     const data = await apiGet(`/api/admin/logs?${params.toString()}`);
     renderLogsSummary(data.summary);
@@ -743,11 +766,16 @@ async function loadLogs() {
     const from = data.total === 0 ? 0 : logsState.offset + 1;
     const to = Math.min(logsState.offset + logsState.limit, data.total);
     document.getElementById('logs-total').textContent = `${data.total} log total`;
-    document.getElementById('logs-page-label').textContent = `${from}–${to} dari ${data.total}`;
-    document.getElementById('logs-prev-btn').disabled = logsState.offset === 0;
-    document.getElementById('logs-next-btn').disabled = to >= data.total;
+    pageLabel.textContent = `${from}–${to} dari ${data.total}`;
+    prevBtn.disabled = logsState.offset === 0;
+    nextBtn.disabled = to >= data.total;
   } catch (e) {
     alert(e.message);
+    pageLabel.textContent = '';
+    prevBtn.disabled = logsState.offset === 0;
+    nextBtn.disabled = false;
+  } finally {
+    tableWrap.classList.remove('is-loading');
   }
 }
 
