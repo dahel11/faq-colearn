@@ -714,11 +714,27 @@ function renderLogsTable(rows) {
   }).join('');
 }
 
-async function loadLogs() {
-  const params = new URLSearchParams({ limit: logsState.limit, offset: logsState.offset });
+// Date filter inputs are plain calendar dates picked in WIB (Asia/Jakarta, UTC+7),
+// but created_at is stored in UTC — convert to the UTC instants that bound that WIB day.
+function jakartaDayStartUtc(dateStr) {
+  return `${dateStr}T00:00:00+07:00`;
+}
+function jakartaDayEndUtc(dateStr) {
+  return `${dateStr}T23:59:59.999+07:00`;
+}
+
+function buildLogsFilterParams() {
+  const params = new URLSearchParams();
   if (logsState.outcome) params.set('outcome', logsState.outcome);
-  if (logsState.from) params.set('from', logsState.from);
-  if (logsState.to) params.set('to', logsState.to);
+  if (logsState.from) params.set('from', jakartaDayStartUtc(logsState.from));
+  if (logsState.to) params.set('to', jakartaDayEndUtc(logsState.to));
+  return params;
+}
+
+async function loadLogs() {
+  const params = buildLogsFilterParams();
+  params.set('limit', logsState.limit);
+  params.set('offset', logsState.offset);
 
   try {
     const data = await apiGet(`/api/admin/logs?${params.toString()}`);
@@ -796,10 +812,7 @@ document.getElementById('logs-export-btn').onclick = async () => {
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span>Mengekspor...';
   try {
-    const params = new URLSearchParams();
-    if (logsState.outcome) params.set('outcome', logsState.outcome);
-    if (logsState.from) params.set('from', logsState.from);
-    if (logsState.to) params.set('to', logsState.to);
+    const params = buildLogsFilterParams();
 
     const res = await fetch(`/api/admin/logs-export?${params.toString()}`);
     if (res.status === 401) {
