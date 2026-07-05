@@ -681,6 +681,9 @@ async function handleCategory(cat, chipsWrap) {
     disableChips(wrap);
     if (item.type === 'branch') {
       await handleBranch(item);
+    } else if (item.type === 'urgent') {
+      addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
+      await handleUrgent(item);
     } else {
       addUserBubble((item.emoji ? item.emoji + ' ' : '') + item.label);
       await handleAnswer(item);
