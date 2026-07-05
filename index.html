@@ -698,6 +698,7 @@ async function handleUrgent(item) {
   session.question = item.label;
   session.startTime = Date.now();
   trackStep(item);
+  logSession('viewed');
   await wait(400); showTyping(); await wait(600); removeTyping();
   const waMsg = encodeURIComponent(item.waMessage);
   addBotBubble(`${item.answer}<br><br>Pesan akan dibalas pada jam operasional: Senin–Jumat 11.00–20.00 WIB & Sabtu 08.00–15.00 WIB.<br><br>
